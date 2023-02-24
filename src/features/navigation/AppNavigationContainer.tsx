@@ -1,12 +1,12 @@
-/* eslint-disable react/no-unstable-nested-components */
 import { NavigationContainer } from '@react-navigation/native';
 import React, { FC } from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { bottomTabPageNames } from './pageNames';
+import { BottomTabs } from './pageNames';
 import { Text, Button } from '@ui-kitten/components';
 import { Layout } from '@ui-kitten/components/ui';
 import { StyleSheet } from 'react-native';
 import { createStackNavigator } from '@react-navigation/stack';
+import { BottomNavigationTabBar } from './BottomNavigationTabBar';
 
 const BottomTab = createBottomTabNavigator();
 const Stack = createStackNavigator();
@@ -14,20 +14,30 @@ const Stack = createStackNavigator();
 export const AppNavigationContainer: FC = () => {
   return (
     <NavigationContainer>
-      <BottomTab.Navigator>
+      <BottomTab.Navigator tabBar={(props) => <BottomNavigationTabBar {...props} />}>
         <BottomTab.Screen
-          name={bottomTabPageNames.page1}
+          name={BottomTabs.dashboard.name}
           options={{ headerShown: false }}
           component={Page1}
         />
 
         <BottomTab.Screen
-          name={bottomTabPageNames.page2}
+          name={BottomTabs.activityHistory.name}
           component={Page2}
         />
 
         <BottomTab.Screen
-          name={bottomTabPageNames.page3}
+          name={BottomTabs.workout.name}
+          component={Page3}
+        />
+
+        <BottomTab.Screen
+          name={BottomTabs.exercises.name}
+          component={Page3}
+        />
+
+        <BottomTab.Screen
+          name={BottomTabs.measurements.name}
           component={Page3}
         />
       </BottomTab.Navigator>
@@ -43,7 +53,7 @@ const styles = StyleSheet.create({
 
 const Page1 = () => {
   return (
-    <Layout style={styles.container}>
+    <Layout level='2' style={styles.container}>
       <Text>Page 1</Text>
     </Layout>
   );
@@ -72,8 +82,8 @@ const Home = (props: any) => {
   };
 
   const nav2 = () => {
-    props.navigation.navigate(bottomTabPageNames.page1);
-  }
+    props.navigation.navigate(BottomTabs.dashboard.name);
+  };
 
   return (
     <Layout style={styles.container}>
