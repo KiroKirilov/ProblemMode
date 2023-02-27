@@ -2,9 +2,9 @@ import React from 'react';
 import { Provider } from 'react-redux';
 import { store } from './store';
 import { ThemedApp } from './ThemedApp';
-import TaskContext from '../common/db/task';
+import DbContext from '../db/problemModeDb';
 
-const { RealmProvider } = TaskContext;
+const { RealmProvider } = DbContext;
 
 const App = () => {
   return (

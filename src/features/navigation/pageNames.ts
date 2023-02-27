@@ -1,8 +1,4 @@
-export interface PageInfo {
-  name: string;
-  title: string;
-}
-
+import { PageInfo } from "../../common/pageInfo";
 
 export class BottomTabs {
   public static workout: PageInfo = {

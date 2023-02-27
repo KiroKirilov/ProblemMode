@@ -7,9 +7,13 @@ import { Layout } from '@ui-kitten/components/ui';
 import { StyleSheet } from 'react-native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { BottomNavigationTabBar } from './BottomNavigationTabBar';
-import TaskContext, { Task, Todo } from '../../common/db/task';
+import DbContext from '../../db/problemModeDb';
+import { ExercisesStack } from '../exercises/ExercisesStack';
+import { useRepository } from '../../db/useRepository';
+import { ExerciseCategory, ExerciseCategoryModel } from '../../db/models/exerciseCategory';
+import { Exercise, ExerciseModel } from '../../db/models/exercise';
 
-const { useRealm, useQuery, useObject } = TaskContext;
+const { useRealm, useQuery, useObject } = DbContext;
 const BottomTab = createBottomTabNavigator();
 const Stack = createStackNavigator();
 
@@ -35,7 +39,8 @@ export const AppNavigationContainer: FC = () => {
 
         <BottomTab.Screen
           name={BottomTabs.exercises.name}
-          component={Page3}
+          options={{ headerShown: false }}
+          component={ExercisesStack}
         />
 
         <BottomTab.Screen
@@ -55,18 +60,12 @@ const styles = StyleSheet.create({
 
 const Page1 = () => {
   const realm = useRealm();
+  const {insert} = useRepository<Exercise>(ExerciseModel.schema.name);
   console.log("realm location:", realm.path);
-
-  const create = () => {
-    realm.write(() => {
-      realm.create('Task', Task.generate('task'))
-      realm.create('Todo', Todo.generate('todo'))
-    })
-  }
 
   return (
     <Layout level='2' style={styles.container}>
-      <Button onPress={create}>Create!!!</Button>
+      <Button onPress={() => insert(ExerciseModel.generate('bofa'))}>Insert!!!</Button>
     </Layout>
   );
 };
