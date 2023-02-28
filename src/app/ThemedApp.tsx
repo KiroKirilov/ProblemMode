@@ -4,9 +4,11 @@ import { useSelector } from 'react-redux';
 import { AppNavigationContainer } from '../features/navigation/AppNavigationContainer';
 import { RootState } from './store';
 import { mapping } from '@eva-design/eva';
+import { appTheme } from '../common/appTheme';
 
 export const ThemedApp = () => {
-  const theme = useSelector((x: RootState) => x.theme.baseTheme);
+  const baseTheme = useSelector((x: RootState) => x.theme.baseTheme);
+  const theme = { ...baseTheme, ...appTheme };
 
   return (
     <ApplicationProvider mapping={mapping} theme={theme}>

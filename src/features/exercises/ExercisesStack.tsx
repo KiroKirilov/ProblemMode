@@ -6,9 +6,9 @@ import { ExercisesView } from "./ExercisesView";
 const Stack = createStackNavigator();
 
 export const ExercisesStack: FC = () => {
-    return (
-        <Stack.Navigator initialRouteName={ExercisesStackPages.exercisesView.name}>
-          <Stack.Screen name={ExercisesStackPages.exercisesView.name} component={ExercisesView} />
-        </Stack.Navigator>
-    );
+  return (
+    <Stack.Navigator initialRouteName={ExercisesStackPages.exercisesView.name}>
+      <Stack.Screen options={{ headerShown: false }} name={ExercisesStackPages.exercisesView.name} component={ExercisesView} />
+    </Stack.Navigator>
+  );
 };

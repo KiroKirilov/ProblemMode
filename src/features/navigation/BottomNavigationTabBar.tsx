@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { BottomNavigation, BottomNavigationTab } from '@ui-kitten/components';
 import { NavigationHelpers, ParamListBase, TabNavigationState } from '@react-navigation/native';
 import { BottomTabNavigationEventMap } from '@react-navigation/bottom-tabs';
-import { ImageProps, ImageStyle, StyleSheet } from 'react-native';
+import { StyleSheet } from 'react-native';
 import { NavigationTabIcon } from './NavigationTabIcon';
 import { BottomTabs } from './pageNames';
 
