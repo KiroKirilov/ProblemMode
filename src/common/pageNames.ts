@@ -1,4 +1,4 @@
-import { PageInfo } from "../../common/pageInfo";
+import { PageInfo } from "./pageInfo";
 
 export class BottomTabs {
   public static workout: PageInfo = {

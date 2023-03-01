@@ -4,7 +4,7 @@ import { NavigationHelpers, ParamListBase, TabNavigationState } from '@react-nav
 import { BottomTabNavigationEventMap } from '@react-navigation/bottom-tabs';
 import { StyleSheet } from 'react-native';
 import { NavigationTabIcon } from './NavigationTabIcon';
-import { BottomTabs } from './pageNames';
+import { BottomTabs } from '../../common/pageNames';
 
 export interface BottomNavigationTabBarProps {
   state: TabNavigationState<any>;
@@ -14,7 +14,7 @@ export interface BottomNavigationTabBarProps {
 const styles = StyleSheet.create({
   navigation: {
     paddingVertical: 0,
-    paddingTop: 7.5
+    paddingTop: 5
   },
 });
 
@@ -27,7 +27,7 @@ export const BottomNavigationTabBar: React.FC<BottomNavigationTabBarProps> = (pr
   };
 
   return (
-    <BottomNavigation style={styles.navigation} appearance={'noIndicator'} selectedIndex={props.state.index}>
+    <BottomNavigation style={styles.navigation} selectedIndex={props.state.index}>
       <BottomNavigationTab
         title={BottomTabs.dashboard.title}
         icon={(style) =>

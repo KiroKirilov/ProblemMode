@@ -1,7 +1,6 @@
 import { NavigationContainer } from '@react-navigation/native';
 import React, { FC } from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { BottomTabs } from './pageNames';
 import { Text, Button } from '@ui-kitten/components';
 import { Layout } from '@ui-kitten/components/ui';
 import { StyleSheet } from 'react-native';
@@ -10,6 +9,7 @@ import { BottomNavigationTabBar } from './BottomNavigationTabBar';
 import { ExercisesStack } from '../exercises/ExercisesStack';
 import { useRepository } from '../../db/useRepository';
 import { Exercise, ExerciseModel } from '../../db/models/exercise';
+import { BottomTabs } from '../../common/pageNames';
 
 const BottomTab = createBottomTabNavigator();
 const Stack = createStackNavigator();
