@@ -14,72 +14,78 @@ export interface BottomNavigationTabBarProps {
 const styles = StyleSheet.create({
   navigation: {
     paddingVertical: 0,
-    paddingTop: 5
+    paddingTop: 9,
+    height: 60
   },
 });
 
 export const BottomNavigationTabBar: React.FC<BottomNavigationTabBarProps> = (props: BottomNavigationTabBarProps) => {
   const [selectedScreenName, setSelectedScreenName] = useState(props.state.routeNames[props.state.index]);
 
-  const onSelect = (newScreen: string) => {
+  const changeScreen = (newScreen: string) => {
     setSelectedScreenName(newScreen);
     props.navigation.navigate(newScreen);
   };
 
+  const onSelectByIndex = (screenIndex: number) => {
+    const screenName = props.navigation.getState().routeNames[screenIndex];
+    changeScreen(screenName);
+  }
+
   return (
-    <BottomNavigation style={styles.navigation} selectedIndex={props.state.index}>
+    <BottomNavigation style={styles.navigation} selectedIndex={props.state.index} onSelect={onSelectByIndex}>
       <BottomNavigationTab
         title={BottomTabs.dashboard.title}
-        icon={(style) =>
+        icon={(props) =>
           <NavigationTabIcon
-            iconStyle={style?.style}
+            iconStyle={props?.style}
             tabIndex={BottomTabs.dashboard.name}
             selectedIndex={selectedScreenName}
-            onPress={() => onSelect(BottomTabs.dashboard.name)}
+            onPress={() => changeScreen(BottomTabs.dashboard.name)}
             iconName="project-diagram"
             focusedIconName="project-diagram" />} />
 
       <BottomNavigationTab
         title={BottomTabs.activityHistory.title}
-        icon={(style) =>
+        icon={(props) =>
           <NavigationTabIcon
-            iconStyle={style?.style}
+            iconStyle={props?.style}
             tabIndex={BottomTabs.activityHistory.name}
             selectedIndex={selectedScreenName}
-            onPress={() => onSelect(BottomTabs.activityHistory.name)}
+            onPress={() => changeScreen(BottomTabs.activityHistory.name)}
             iconName="clock"
             focusedIconName="clock" />} />
 
       <BottomNavigationTab
         title={BottomTabs.workout.title}
-        icon={(style) =>
+        icon={(props) =>
           <NavigationTabIcon
-            iconStyle={style?.style}
+            iconStyle={props?.style}
             tabIndex={BottomTabs.workout.name}
             selectedIndex={selectedScreenName}
-            onPress={() => onSelect(BottomTabs.workout.name)}
+            onPress={() => changeScreen(BottomTabs.workout.name)}
             iconName="plus"
             focusedIconName="plus" />} />
 
       <BottomNavigationTab
         title={BottomTabs.exercises.title}
-        icon={(style) =>
+        icon={(props) =>
           <NavigationTabIcon
-            iconStyle={style?.style}
+            iconStyle={props?.style}
             tabIndex={BottomTabs.exercises.name}
             selectedIndex={selectedScreenName}
-            onPress={() => onSelect(BottomTabs.exercises.name)}
+            onPress={() => changeScreen(BottomTabs.exercises.name)}
             iconName="dumbbell"
             focusedIconName="dumbbell" />} />
 
       <BottomNavigationTab
         title={BottomTabs.measurements.title}
-        icon={(style) =>
+        icon={(props) =>
           <NavigationTabIcon
-            iconStyle={style?.style}
+            iconStyle={props?.style}
             tabIndex={BottomTabs.measurements.name}
             selectedIndex={selectedScreenName}
-            onPress={() => onSelect(BottomTabs.measurements.name)}
+            onPress={() => changeScreen(BottomTabs.measurements.name)}
             iconName="ruler"
             focusedIconName="ruler" />} />
     </BottomNavigation>

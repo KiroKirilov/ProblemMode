@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '../../common/FontAwesomeIcon';
 
 export interface NavigationTabIconProps {
     iconStyle: StyleProp<ImageStyle>;
-    onPress: () => void;
+    onPress?: () => void;
     iconName: string;
     tabIndex: number | string;
     selectedIndex: number | string;
