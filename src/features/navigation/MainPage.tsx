@@ -1,6 +1,6 @@
 import { Layout, Text } from "@ui-kitten/components";
 import React, { FC } from "react";
-import { Animated, StyleSheet, View, Easing } from "react-native";
+import { Animated, StyleSheet, View, Easing, Image } from "react-native";
 
 export interface MainPageProps {
   children?: React.ReactNode;
@@ -8,8 +8,9 @@ export interface MainPageProps {
   RightAccessory?: React.ComponentType;
 }
 
-var AnimatedText = Animated.createAnimatedComponent(Text);
-var AnimatedLayout = Animated.createAnimatedComponent(Layout);
+const shadowImage = require("../../assets/images/shadow.png");
+const AnimatedText = Animated.createAnimatedComponent(Text);
+const AnimatedLayout = Animated.createAnimatedComponent(Layout);
 
 const animated = new Animated.Value(0);
 
@@ -48,7 +49,7 @@ export const MainPage: FC<MainPageProps> = (props: MainPageProps) => {
   return (
     <Layout style={{ flex: 1 }}>
       <View style={styles.header}>
-        <AnimatedLayout style={[styles.toolbarContainer, {elevation: shadowElevation}]}>
+        <AnimatedLayout style={[styles.toolbarContainer, { elevation: shadowElevation }]}>
           <View style={styles.toolbar}>
             <View style={styles.flexView} />
             {RightAccessory && <RightAccessory />}
@@ -64,11 +65,13 @@ export const MainPage: FC<MainPageProps> = (props: MainPageProps) => {
 
       <Animated.ScrollView
         style={{ flex: 1 }}
-        contentContainerStyle={{paddingTop: 110}}
+        contentContainerStyle={{ paddingTop: 110 }}
         scrollEventThrottle={16}
         onScroll={onScroll}>
         {props.children}
       </Animated.ScrollView>
+
+        <Image style={styles.shadowImage} source={shadowImage} />
     </Layout>
   );
 };
@@ -109,5 +112,13 @@ const styles = StyleSheet.create({
     fontFamily: 'Roboto-Light',
     width: '50%',
     paddingLeft: 15
+  },
+  shadowImage: {
+    position: 'absolute',
+    bottom: -14,
+    opacity: 0.4,
+    resizeMode: 'stretch',
+    width: '100%',
+    height: 50,
   }
 });
