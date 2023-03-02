@@ -17,7 +17,6 @@ const style = StyleSheet.create({
 export const FontAwesomeIcon: FC<FontAwesomeIconProps> = (props: FontAwesomeIconProps) => {
   const { height, tintColor, ...iconStyle } = StyleSheet.flatten(props.iconStyle);
   const mergedStyle = {...iconStyle, ...style.iconContainer}
-  console.log(props);
 
   return (
     <Icon
