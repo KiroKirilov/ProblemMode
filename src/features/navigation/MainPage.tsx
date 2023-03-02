@@ -63,7 +63,8 @@ export const MainPage: FC<MainPageProps> = (props: MainPageProps) => {
       </View>
 
       <Animated.ScrollView
-        style={{ paddingTop: 110, flex: 1 }}
+        style={{ flex: 1 }}
+        contentContainerStyle={{paddingTop: 110}}
         scrollEventThrottle={16}
         onScroll={onScroll}>
         {props.children}
