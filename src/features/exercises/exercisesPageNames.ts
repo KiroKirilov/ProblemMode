@@ -5,4 +5,9 @@ export class ExercisesStackPages {
     name: 'exercisesView',
     title: 'exercisesView',
   };
+
+  public static exercisesForm: PageInfo = {
+    name: 'exercisesForm',
+    title: 'exercisesForm',
+  };
 }

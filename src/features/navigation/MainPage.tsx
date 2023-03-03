@@ -47,7 +47,7 @@ export const MainPage: FC<MainPageProps> = (props: MainPageProps) => {
   });
 
   return (
-    <Layout style={{ flex: 1 }}>
+    <Layout style={styles.flexView}>
       <View style={styles.header}>
         <AnimatedLayout style={[styles.toolbarContainer, { elevation: shadowElevation }]}>
           <View style={styles.toolbar}>

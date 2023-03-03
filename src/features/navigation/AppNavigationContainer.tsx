@@ -63,7 +63,7 @@ const Page1 = () => {
 
   return (
     <Layout level='2' style={styles.container}>
-      <Button onPress={() => insert(ExerciseModel.generate('stenli'))}>Insert!!!</Button>
+      <Button onPress={() => insert(ExerciseModel.generate('ab crunch'))}>Insert!!!</Button>
     </Layout>
   );
 };
