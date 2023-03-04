@@ -21,6 +21,7 @@
     "@ui-kitten/components": "^5.1.2",
     "@ui-kitten/eva-icons": "^5.1.2",
     "react": "18.2.0",
+    "react-hook-form": "^7.43.4",
     "react-native": "0.71.3",
     "react-native-gesture-handler": "^2.9.0",
     "react-native-get-random-values": "^1.8.0",
@@ -29,7 +30,8 @@
     "react-native-svg": "^13.8.0",
     "react-native-vector-icons": "^9.2.0",
     "react-redux": "^8.0.5",
-    "realm": "^11.5.1"
+    "realm": "^11.5.1",
+    "rn-android-keyboard-adjust": "^2.1.2"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",

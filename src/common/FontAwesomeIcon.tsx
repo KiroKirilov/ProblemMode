@@ -5,18 +5,22 @@ import Icon from 'react-native-vector-icons/FontAwesome5';
 export interface FontAwesomeIconProps {
   iconStyle?: StyleProp<ImageStyle>;
   name: string;
+  width?: string | number;
 }
 
 const style = StyleSheet.create({
   iconContainer: {
-    width: '100%',
-    textAlign: 'center'
+    textAlign: 'center',
   }
 })
 
 export const FontAwesomeIcon: FC<FontAwesomeIconProps> = (props: FontAwesomeIconProps) => {
   const { height, tintColor, ...iconStyle } = StyleSheet.flatten(props.iconStyle);
-  const mergedStyle = {...iconStyle, ...style.iconContainer}
+  const mergedStyle = { ...iconStyle, ...style.iconContainer }
+  
+  if (props.width) {
+    mergedStyle.width = props.width
+  }
 
   return (
     <Icon

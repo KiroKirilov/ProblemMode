@@ -26,7 +26,7 @@ export const NavigationTabIcon: React.FC<NavigationTabIconProps> = (props: Navig
 
     return (
         <TouchableOpacity style={styles.iconWrapper} onPress={props.onPress}>
-            <FontAwesomeIcon name={iconName} iconStyle={props.iconStyle} />
+            <FontAwesomeIcon name={iconName} iconStyle={props.iconStyle} width="100%" />
         </TouchableOpacity>
     );
 };
