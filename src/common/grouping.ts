@@ -24,7 +24,6 @@ export function groupedToArr<TItem>(grouped: GroupedArray<TItem>) {
 
 export function groupBy<TItem>(arr: TItem[], expr: (item: TItem) => string | number): Group<TItem>[] {
   const grouped: GroupedArray<TItem> = {};
-  console.log('hiii')
 
   for (const item of arr) {
     const keyValue = expr(item);

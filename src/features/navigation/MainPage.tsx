@@ -1,6 +1,7 @@
 import { Layout, Text } from "@ui-kitten/components";
 import React, { FC } from "react";
 import { Animated, StyleSheet, View, Easing, Image } from "react-native";
+import { ShadowImage } from "./ShadowImage";
 
 export interface MainPageProps {
   children?: React.ReactNode;
@@ -8,7 +9,6 @@ export interface MainPageProps {
   RightAccessory?: React.ComponentType;
 }
 
-const shadowImage = require("../../assets/images/shadow.png");
 const AnimatedText = Animated.createAnimatedComponent(Text);
 const AnimatedLayout = Animated.createAnimatedComponent(Layout);
 
@@ -47,36 +47,36 @@ export const MainPage: FC<MainPageProps> = (props: MainPageProps) => {
   });
 
   return (
-    <Layout style={styles.flexView}>
-      <View style={styles.header}>
-        <AnimatedLayout style={[styles.toolbarContainer, { elevation: shadowElevation }]}>
-          <View style={styles.toolbar}>
-            <View style={styles.flexView} />
+    <Layout style={pageStyles.flexView}>
+      <View style={pageStyles.header}>
+        <AnimatedLayout style={[pageStyles.toolbarContainer, { elevation: shadowElevation }]}>
+          <View style={pageStyles.toolbar}>
+            <View style={pageStyles.flexView} />
             {RightAccessory && <RightAccessory />}
           </View>
 
         </AnimatedLayout>
 
         <AnimatedText
-          style={[styles.title, { fontSize: fontSize, bottom: bottom }]}>
+          style={[pageStyles.title, { fontSize: fontSize, bottom: bottom }]}>
           {props.title}
         </AnimatedText>
       </View>
 
       <Animated.ScrollView
-        style={{ flex: 1 }}
+        style={pageStyles.flexView}
         contentContainerStyle={{ paddingTop: 110 }}
         scrollEventThrottle={16}
         onScroll={onScroll}>
         {props.children}
       </Animated.ScrollView>
 
-        <Image style={styles.shadowImage} source={shadowImage} />
+        <ShadowImage />
     </Layout>
   );
 };
 
-const styles = StyleSheet.create({
+export const pageStyles = StyleSheet.create({
   toolbarContainer: {
     height: 50,
     shadowColor: "#000",
@@ -86,8 +86,6 @@ const styles = StyleSheet.create({
     },
     shadowOpacity: 0.22,
     shadowRadius: 20,
-  },
-  statusBar: {
   },
   toolbar: {
     flex: 1,
@@ -113,12 +111,4 @@ const styles = StyleSheet.create({
     width: '50%',
     paddingLeft: 15
   },
-  shadowImage: {
-    position: 'absolute',
-    bottom: -14,
-    opacity: 0.4,
-    resizeMode: 'stretch',
-    width: '100%',
-    height: 50,
-  }
 });
