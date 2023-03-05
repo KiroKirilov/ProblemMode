@@ -1,8 +1,6 @@
 import { Layout } from "@ui-kitten/components";
 import React, { FC } from "react";
 import { StyleSheet } from "react-native";
-import { commonStyles } from "../../common/commonStyles";
-import { BottomTabs } from "../../common/pageNames";
 import { MainPage } from "../navigation/MainPage";
 import { ExerciseGroup } from "./ExerciseGroup";
 import { ExercisePageActions } from "./ExercisePageActions";

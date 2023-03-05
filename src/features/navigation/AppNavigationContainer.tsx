@@ -8,8 +8,8 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { BottomNavigationTabBar } from './BottomNavigationTabBar';
 import { ExercisesStack } from '../exercises/ExercisesStack';
 import { useRepository } from '../../db/useRepository';
-import { Exercise, ExerciseModel } from '../../db/models/exercise';
 import { BottomTabs } from '../../common/pageNames';
+import { ExerciseBodyPart, ExerciseBodyPartModel } from '../../db/models/exerciseBodyPart';
 
 const BottomTab = createBottomTabNavigator();
 const Stack = createStackNavigator();
@@ -55,15 +55,20 @@ const styles = StyleSheet.create({
   },
 });
 
+function getRandomArbitrary(min: number, max: number) {
+  return Math.random() * (max - min) + min;
+}
+
+
 const Page1 = () => {
-  const {insert, useDataQuery} = useRepository<Exercise, ExerciseModel>(ExerciseModel.schema.name);
+  const {insert, useDataQuery} = useRepository<ExerciseBodyPart, ExerciseBodyPartModel>(ExerciseBodyPartModel.schema.name);
   
   const data = useDataQuery().filtered("name == 'stamat'");
   console.log(data.length);
 
   return (
     <Layout level='2' style={styles.container}>
-      <Button onPress={() => insert(ExerciseModel.generate('ab crunch'))}>Insert!!!</Button>
+      <Button onPress={() => insert(ExerciseBodyPartModel.generate('ab crunch' + getRandomArbitrary(1, 100)))}>Insert!!!</Button>
     </Layout>
   );
 };

@@ -7,8 +7,11 @@ export const useRepository = <T extends BaseModel, TModel extends Realm.Object<T
   const realm = useRealm();
 
   const insert = (entity: T) => {
-    realm.write(() => {
-      realm.create(name, entity);
+    return new Promise<void>(resolve => {
+      realm.write(() => {
+        realm.create(name, entity);
+        resolve();
+      })
     })
   }
 

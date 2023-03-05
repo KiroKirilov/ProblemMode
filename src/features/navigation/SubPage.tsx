@@ -1,7 +1,7 @@
 import { useNavigation } from "@react-navigation/native";
 import { Button, Layout, Text } from "@ui-kitten/components";
 import React from "react";
-import { Image, ScrollView, StyleSheet, View } from "react-native";
+import { Image, ScrollView, StyleProp, StyleSheet, View, ViewStyle } from "react-native";
 import { FontAwesomeIcon } from "../../common/FontAwesomeIcon";
 import { pageStyles } from "./MainPage";
 import { ShadowImage } from "./ShadowImage";
@@ -9,6 +9,8 @@ import { ShadowImage } from "./ShadowImage";
 export interface SubPageProps {
   children?: React.ReactNode;
   title: string;
+  level?: string;
+  contentContainerStyle?: StyleProp<ViewStyle>
 }
 
 export const SubPage: React.FC<SubPageProps> = (props: SubPageProps) => {
@@ -18,7 +20,7 @@ export const SubPage: React.FC<SubPageProps> = (props: SubPageProps) => {
   }
 
   return (
-    <Layout style={pageStyles.flexView}>
+    <Layout style={pageStyles.flexView} level={props.level}>
       <View style={pageStyles.header}>
         <Layout style={[pageStyles.toolbarContainer, { elevation: 5 }]}>
           <View style={pageStyles.toolbar}>
@@ -43,7 +45,7 @@ export const SubPage: React.FC<SubPageProps> = (props: SubPageProps) => {
 
       <ScrollView
         style={pageStyles.flexView}
-        contentContainerStyle={{ paddingTop: 60 }}>
+        contentContainerStyle={[{ paddingTop: 45 }, props.contentContainerStyle]}>
         {props.children}
       </ScrollView>
 

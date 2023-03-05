@@ -6,6 +6,9 @@ export interface FontAwesomeIconProps {
   iconStyle?: StyleProp<ImageStyle>;
   name: string;
   width?: string | number;
+  light?: boolean;
+  solid?: boolean;
+  brand?: boolean;
 }
 
 const style = StyleSheet.create({
@@ -17,7 +20,7 @@ const style = StyleSheet.create({
 export const FontAwesomeIcon: FC<FontAwesomeIconProps> = (props: FontAwesomeIconProps) => {
   const { height, tintColor, ...iconStyle } = StyleSheet.flatten(props.iconStyle);
   const mergedStyle = { ...iconStyle, ...style.iconContainer }
-  
+
   if (props.width) {
     mergedStyle.width = props.width
   }
@@ -28,6 +31,9 @@ export const FontAwesomeIcon: FC<FontAwesomeIconProps> = (props: FontAwesomeIcon
       size={height as number}
       color={tintColor}
       style={mergedStyle as any}
+      brand={props.brand}
+      light={props.light}
+      solid={props.solid}
     />
   );
 };
