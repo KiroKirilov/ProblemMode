@@ -1,14 +1,17 @@
-import { useNavigation } from "@react-navigation/native";
+import { RouteProp, useNavigation, useRoute } from "@react-navigation/native";
 import { useController, useForm } from "react-hook-form";
+import { getIndexPathOfItem } from "../../../common/getIndexPathOfItem";
 import { Exercise, ExerciseModel } from "../../../db/models/exercise";
 import { useRepository } from "../../../db/useRepository";
+import { ExerciseStackParamList } from "../exercisesPageNames";
 import { useBodyParts } from "../useBodyParts";
 import { useCategories } from "../useCategories";
 import { ExerciseFormModel } from "./exerciseFormModel";
 
 export const useExerciseForm = () => {
+  const { params: exercise } = useRoute<RouteProp<ExerciseStackParamList, 'exercisesForm'>>();
   const { control, handleSubmit } = useForm<ExerciseFormModel>();
-  const { insert } = useRepository<Exercise, ExerciseModel>(ExerciseModel.schema.name);
+  const { insert, update } = useRepository<Exercise, ExerciseModel>(ExerciseModel.schema.name);
   const navigation = useNavigation();
 
   const { bodyParts } = useBodyParts();
@@ -16,7 +19,7 @@ export const useExerciseForm = () => {
 
   const nameControl = useController({
     control,
-    defaultValue: '',
+    defaultValue: exercise?.name || '',
     name: 'name',
     rules: {
       required: 'Please fill in the name'
@@ -26,6 +29,7 @@ export const useExerciseForm = () => {
   const bodyPartControl = useController({
     control,
     name: 'bodyPart',
+    defaultValue: getIndexPathOfItem(bodyParts, exercise?.bodyPart, x => x?._id.toHexString()),
     rules: {
       required: 'Please select a body part'
     }
@@ -34,6 +38,7 @@ export const useExerciseForm = () => {
   const categoryControl = useController({
     control,
     name: 'category',
+    defaultValue: getIndexPathOfItem(categories, exercise?.category, x => x?._id.toHexString()),
     rules: {
       required: 'Please select a category'
     }
@@ -42,9 +47,15 @@ export const useExerciseForm = () => {
   const onSubmit = async (model: ExerciseFormModel) => {
     const bodyPart = bodyParts[model.bodyPart.row];
     const category = categories[model.category.row];
-    const dbModel = ExerciseModel.generate(model.name, category, bodyPart);
-    await insert(dbModel);
-    navigation.goBack();
+    const dbModel = ExerciseModel.generate(model.name, category, bodyPart, exercise?._id);
+
+    if (exercise) {
+      await update(dbModel);
+      navigation.goBack();
+    } else {
+      await insert(dbModel);
+      navigation.goBack();
+    }
   }
 
   return {

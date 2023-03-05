@@ -18,9 +18,9 @@ export class ExerciseModel extends Realm.Object<ExerciseModel> implements Exerci
   bodyPart!: ExerciseBodyPart;
   category!: ExerciseCategory;
 
-  static generate(name: string, category: ExerciseCategoryModel, bodyPart: ExerciseBodyPartModel): Exercise {
+  static generate(name: string, category: ExerciseCategoryModel, bodyPart: ExerciseBodyPartModel, id?: ObjectId | undefined): Exercise {
     return {
-      _id: new Realm.BSON.ObjectId(),
+      _id: id || new Realm.BSON.ObjectId(),
       name,
       category: category,
       bodyPart: bodyPart

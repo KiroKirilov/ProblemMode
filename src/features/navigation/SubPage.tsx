@@ -8,9 +8,10 @@ import { ShadowImage } from "./ShadowImage";
 
 export interface SubPageProps {
   children?: React.ReactNode;
-  title: string;
+  title?: string;
   level?: string;
-  contentContainerStyle?: StyleProp<ViewStyle>
+  contentContainerStyle?: StyleProp<ViewStyle>;
+  rightAccessory?: () => React.ReactNode;
 }
 
 export const SubPage: React.FC<SubPageProps> = (props: SubPageProps) => {
@@ -38,6 +39,7 @@ export const SubPage: React.FC<SubPageProps> = (props: SubPageProps) => {
               {props.title}
             </Text>
             <View style={pageStyles.flexView} />
+            {props.rightAccessory && props.rightAccessory()}
           </View>
 
         </Layout>

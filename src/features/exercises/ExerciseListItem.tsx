@@ -1,8 +1,12 @@
+import { useNavigation } from "@react-navigation/native";
+import { StackNavigationProp } from "@react-navigation/stack";
 import { Text } from "@ui-kitten/components";
 import React from "react";
-import { StyleSheet, View } from "react-native";
+import { StyleSheet } from "react-native";
+import { TouchableOpacity } from "react-native-gesture-handler";
 import { InitialsAvatar } from "../../common/InitialsAvatar";
 import { ExerciseModel } from "../../db/models/exercise";
+import { ExercisesStackPages, ExerciseStackParamList } from "./exercisesPageNames";
 
 interface ExerciseListItemProps {
   item: ExerciseModel;
@@ -10,13 +14,18 @@ interface ExerciseListItemProps {
 
 export const ExerciseListItem: React.FC<ExerciseListItemProps> = (props: ExerciseListItemProps) => {
   const { item } = props;
+  const navigation = useNavigation<StackNavigationProp<ExerciseStackParamList>>();
+
+  const goToDetails = () => {
+    navigation.navigate(ExercisesStackPages.exercisesDetails.name, { id: props.item._id.toHexString() });
+  }
 
   return (
-    <View style={styles.container}>
+    <TouchableOpacity style={styles.container} onPress={goToDetails}>
       <InitialsAvatar title={item.name} />
 
       <Text style={styles.name}>{item.name}</Text>
-    </View>
+    </TouchableOpacity>
   );
 };
 
