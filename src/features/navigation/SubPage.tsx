@@ -1,7 +1,7 @@
 import { useNavigation } from "@react-navigation/native";
 import { Button, Layout, Text } from "@ui-kitten/components";
 import React from "react";
-import { Image, ScrollView, StyleProp, StyleSheet, View, ViewStyle } from "react-native";
+import { ScrollView, StyleProp, StyleSheet, View, ViewStyle } from "react-native";
 import { FontAwesomeIcon } from "../../common/FontAwesomeIcon";
 import { pageStyles } from "./MainPage";
 import { ShadowImage } from "./ShadowImage";
@@ -12,6 +12,7 @@ export interface SubPageProps {
   level?: string;
   contentContainerStyle?: StyleProp<ViewStyle>;
   rightAccessory?: () => React.ReactNode;
+  leftAccessory?: () => React.ReactNode;
 }
 
 export const SubPage: React.FC<SubPageProps> = (props: SubPageProps) => {
@@ -25,19 +26,26 @@ export const SubPage: React.FC<SubPageProps> = (props: SubPageProps) => {
       <View style={pageStyles.header}>
         <Layout style={[pageStyles.toolbarContainer, { elevation: 5 }]}>
           <View style={pageStyles.toolbar}>
-            <View style={{ width: '10%' }}>
-              <Button
-                onPress={goBack}
-                style={{ width: 50 }}
-                appearance='ghost'
-                status='control'
-                accessoryLeft={(props) => <FontAwesomeIcon iconStyle={props?.style} name="arrow-left" />} />
-            </View>
+            {
+              props.leftAccessory
+                ? props.leftAccessory()
+                : <View style={{ width: '10%' }}><Button
+                  onPress={goBack}
+                  style={{ width: 50 }}
+                  appearance='ghost'
+                  status='control'
+                  accessoryLeft={(props) => <FontAwesomeIcon iconStyle={props?.style} name="arrow-left" />} />
+                </View>
+            }
 
-            <Text
-              style={[pageStyles.title, subPageStyles.subPageTitle]}>
-              {props.title}
-            </Text>
+            {
+              props.title &&
+              <Text
+                style={[pageStyles.title, subPageStyles.subPageTitle]}>
+                {props.title}
+              </Text>
+            }
+
             <View style={pageStyles.flexView} />
             {props.rightAccessory && props.rightAccessory()}
           </View>

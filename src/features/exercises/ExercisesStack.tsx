@@ -1,7 +1,7 @@
 import { createStackNavigator } from "@react-navigation/stack";
 import React, { FC } from "react";
 import { ExerciseDetails } from "./details/ExerciseDetails";
-import { ExercisesStackPages } from "./exercisesPageNames";
+import { ExercisesStackPages } from "./exercisesPages";
 import { ExercisesView } from "./ExercisesView";
 import { ExerciseForm } from "./form/ExerciseForm";
 

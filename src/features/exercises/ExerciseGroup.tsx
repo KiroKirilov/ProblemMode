@@ -1,6 +1,6 @@
 import React from "react";
+import { SectionHeader } from "../../common/SectionHeader";
 import { ExerciseModel } from "../../db/models/exercise";
-import { ExerciseGroupHeader } from "./ExerciseGroupHeader";
 import { ExerciseListItem } from "./ExerciseListItem";
 
 export interface ExerciseGroupProps {
@@ -11,7 +11,7 @@ export interface ExerciseGroupProps {
 export const ExerciseGroup: React.FC<ExerciseGroupProps> = (props: ExerciseGroupProps) => {
   return (
     <>
-      <ExerciseGroupHeader title={props.title} />
+      <SectionHeader title={props.title} />
       {
         props.exercises.map((exercise, index) => (
           <ExerciseListItem item={exercise} key={index} />

@@ -1,3 +1,4 @@
+import { useTheme } from '@ui-kitten/components';
 import React, { FC } from 'react';
 import { ImageStyle, StyleProp, StyleSheet } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome5';
@@ -18,7 +19,13 @@ const style = StyleSheet.create({
 })
 
 export const FontAwesomeIcon: FC<FontAwesomeIconProps> = (props: FontAwesomeIconProps) => {
-  const { height, tintColor, ...iconStyle } = StyleSheet.flatten(props.iconStyle);
+  const theme = useTheme();
+  const defaultStyle: ImageStyle = {
+    tintColor: theme["text-basic-color"],
+    height: theme["fontSize"]
+  };
+  
+  const { height, tintColor, ...iconStyle } = StyleSheet.flatten(props.iconStyle || defaultStyle);
   const mergedStyle = { ...iconStyle, ...style.iconContainer }
 
   if (props.width) {
@@ -37,3 +44,7 @@ export const FontAwesomeIcon: FC<FontAwesomeIconProps> = (props: FontAwesomeIcon
     />
   );
 };
+
+const defaultIconStyle = StyleSheet.create({
+
+})

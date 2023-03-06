@@ -3,7 +3,7 @@ import { StackNavigationProp } from "@react-navigation/stack";
 import { Button } from "@ui-kitten/components";
 import React from "react";
 import { FontAwesomeIcon } from "../../common/FontAwesomeIcon";
-import { ExercisesStackPages, ExerciseStackParamList } from "./exercisesPageNames";
+import { ExercisesStackPages, ExerciseStackParamList } from "./exercisesPages";
 
 export const ExercisePageActions: React.FC = () => {
   const navigation = useNavigation<StackNavigationProp<ExerciseStackParamList>>();

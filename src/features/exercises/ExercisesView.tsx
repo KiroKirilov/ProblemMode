@@ -1,10 +1,11 @@
-import { Layout } from "@ui-kitten/components";
+import { RouteProp, useRoute } from "@react-navigation/native";
+import { Layout, Text } from "@ui-kitten/components";
 import React, { FC } from "react";
 import { StyleSheet } from "react-native";
 import { MainPage } from "../navigation/MainPage";
 import { ExerciseGroup } from "./ExerciseGroup";
 import { ExercisePageActions } from "./ExercisePageActions";
-import { ExercisesStackPages } from "./exercisesPageNames";
+import { ExercisesStackPages, ExerciseStackParamList } from "./exercisesPages";
 import { useExercises } from "./useExercises";
 
 export const ExercisesView: FC = () => {

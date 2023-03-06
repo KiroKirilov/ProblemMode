@@ -3,7 +3,7 @@ import { useController, useForm } from "react-hook-form";
 import { getIndexPathOfItem } from "../../../common/getIndexPathOfItem";
 import { Exercise, ExerciseModel } from "../../../db/models/exercise";
 import { useRepository } from "../../../db/useRepository";
-import { ExerciseStackParamList } from "../exercisesPageNames";
+import { ExerciseStackParamList } from "../exercisesPages";
 import { useBodyParts } from "../useBodyParts";
 import { useCategories } from "../useCategories";
 import { ExerciseFormModel } from "./exerciseFormModel";

@@ -5,7 +5,7 @@ import React, { FC } from "react";
 import { StyleSheet, View } from "react-native";
 import { FontAwesomeIcon } from "../../../common/FontAwesomeIcon";
 import { ExerciseModel } from "../../../db/models/exercise";
-import { ExercisesStackPages, ExerciseStackParamList } from "../exercisesPageNames";
+import { ExercisesStackPages, ExerciseStackParamList } from "../exercisesPages";
 
 export interface ExerciseDetailsActionsProps {
   exercise: ExerciseModel;

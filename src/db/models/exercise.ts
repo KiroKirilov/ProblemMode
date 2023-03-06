@@ -27,6 +27,16 @@ export class ExerciseModel extends Realm.Object<ExerciseModel> implements Exerci
     };
   }
 
+
+  static generateByNames(name: string, catName: string, bpName: string): Exercise {
+    return {
+      _id: new Realm.BSON.ObjectId(),
+      name,
+      category: ExerciseCategoryModel.generate(catName),
+      bodyPart: ExerciseBodyPartModel.generate(bpName)
+    };
+  }
+
   static schema: Realm.ObjectSchema = {
     name: 'Exercise',
     primaryKey: '_id',

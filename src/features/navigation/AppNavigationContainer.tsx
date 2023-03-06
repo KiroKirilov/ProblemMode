@@ -10,6 +10,8 @@ import { ExercisesStack } from '../exercises/ExercisesStack';
 import { useRepository } from '../../db/useRepository';
 import { BottomTabs } from '../../common/pageNames';
 import { ExerciseBodyPart, ExerciseBodyPartModel } from '../../db/models/exerciseBodyPart';
+import { WorkoutStack } from '../workout/WorkoutStack';
+import { Exercise, ExerciseModel } from '../../db/models/exercise';
 
 const BottomTab = createBottomTabNavigator();
 const Stack = createStackNavigator();
@@ -31,7 +33,8 @@ export const AppNavigationContainer: FC = () => {
 
         <BottomTab.Screen
           name={BottomTabs.workout.name}
-          component={Page3}
+          options={{ headerShown: false }}
+          component={WorkoutStack}
         />
 
         <BottomTab.Screen
@@ -61,14 +64,14 @@ function getRandomArbitrary(min: number, max: number) {
 
 
 const Page1 = () => {
-  const {insert, useDataQuery} = useRepository<ExerciseBodyPart, ExerciseBodyPartModel>(ExerciseBodyPartModel.schema.name);
+  const {insert, useDataQuery} = useRepository<Exercise, ExerciseModel>(ExerciseModel.schema.name);
   
   const data = useDataQuery().filtered("name == 'stamat'");
   console.log(data.length);
 
   return (
     <Layout level='2' style={styles.container}>
-      <Button onPress={() => insert(ExerciseBodyPartModel.generate('ab crunch' + getRandomArbitrary(1, 100)))}>Insert!!!</Button>
+      <Button onPress={() => insert(ExerciseModel.generateByNames('ab crunch', 'category', 'body part'))}>Insert!!!</Button>
     </Layout>
   );
 };

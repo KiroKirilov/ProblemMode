@@ -20,7 +20,7 @@ export class ExercisesStackPages {
 }
 
 export interface ExerciseStackParamList extends ParamListBase {
-  exercisesView: undefined;
+  exercisesView: { selectMode: boolean } | undefined;
   exercisesForm: ExerciseModel | undefined;
   exerciseDetails: { id: string };
 }

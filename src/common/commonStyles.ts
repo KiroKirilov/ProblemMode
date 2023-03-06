@@ -21,3 +21,10 @@ export const formStyles = StyleSheet.create({
     alignItems: 'center',
   }
 })
+
+export const commonStyles = StyleSheet.create({
+  allCaps: {
+    textTransform: 'uppercase',
+    letterSpacing: 2
+  }
+})
