@@ -19,6 +19,8 @@ export const ExercisesView: FC = () => {
             <ExerciseGroup key={exerciseGroup.key} title={exerciseGroup.key} exercises={exerciseGroup.items} />
           ))
         }
+
+        <Button
       </Layout>
     </MainPage>
   );

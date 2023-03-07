@@ -1,27 +1,43 @@
-import { dark } from '@eva-design/eva';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { ExerciseModel } from '../../db/models/exercise';
+
+interface SelectedExercises {
+  [key: string]: boolean;
+}
 
 export interface ExercisesState {
-  baseTheme: any;
-  baseThemeName: 'dark' | 'light';
+  selectedExercises: SelectedExercises;
+  isCurrentlySelecting: boolean;
 }
 
 const initialState: ExercisesState = {
-  baseTheme: dark,
-  baseThemeName: 'dark',
+  selectedExercises: {},
+  isCurrentlySelecting: false
 };
 
 export const exercisesSlice = createSlice({
   name: 'theme',
   initialState,
   reducers: {
-    changeBaseTheme: (state, action: PayloadAction<ExercisesState>) => {
-      state.baseTheme = action.payload.baseTheme;
-      state.baseThemeName = action.payload.baseThemeName;
+    selectExercise: (state, action: PayloadAction<string>) => {
+      state.selectedExercises = {
+        ...state.selectedExercises,
+        [action.payload]: true
+      }
     },
+    unselectExercise: (state, action: PayloadAction<string>) => {
+      const { [action.payload]: removedExercise, ...remainingExercises} = state.selectedExercises;
+      state.selectedExercises = remainingExercises;
+    },
+    startSelecting: (state) => {
+      state.isCurrentlySelecting = true;
+    },
+    stopSelecting: (state) => {
+      state.isCurrentlySelecting = false;
+    }
   },
 });
 
-export const { changeBaseTheme } = exercisesSlice.actions;
+export const { selectExercise, unselectExercise, startSelecting, stopSelecting } = exercisesSlice.actions;
 
 export default exercisesSlice.reducer;
