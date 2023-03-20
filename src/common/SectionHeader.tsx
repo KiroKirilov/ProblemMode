@@ -4,7 +4,7 @@ import { StyleSheet } from "react-native";
 import { commonStyles } from "./commonStyles";
 
 export interface SectionHeaderProps {
-  title: string;
+  title?: string | number;
 }
 
 export const SectionHeader: React.FC<SectionHeaderProps> = (props: SectionHeaderProps) => {

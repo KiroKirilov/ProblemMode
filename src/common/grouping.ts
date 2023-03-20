@@ -8,6 +8,18 @@ export interface Group<TItem> {
   items: TItem[];
 }
 
+function getGroupedArray<TItem>(arr: TItem[], expr: (item: TItem) => string | number) {
+  const grouped: GroupedArray<TItem> = {};
+
+  for (const item of arr) {
+    const keyValue = expr(item);
+    const values = grouped[keyValue] || [];
+    values.push(item);
+    grouped[keyValue] = values;
+  }
+  return grouped;
+}
+
 export function groupedToArr<TItem>(grouped: GroupedArray<TItem>) {
   const groups: Group<TItem>[] = [];
 
@@ -23,14 +35,23 @@ export function groupedToArr<TItem>(grouped: GroupedArray<TItem>) {
 }
 
 export function groupBy<TItem>(arr: TItem[], expr: (item: TItem) => string | number): Group<TItem>[] {
-  const grouped: GroupedArray<TItem> = {};
-
-  for (const item of arr) {
-    const keyValue = expr(item);
-    const values = grouped[keyValue] || [];
-    values.push(item);
-    grouped[keyValue] = values;
-  }
+  const grouped = getGroupedArray(arr, expr);
 
   return groupedToArr(grouped);
+}
+
+export function groupByFlat<TItem>(arr: TItem[], expr: (item: TItem) => string | number): (TItem | { key: string | number })[] {
+  const grouped = getGroupedArray(arr, expr);
+
+  const results = [];
+
+  
+  for (const key in grouped) {
+    const items = grouped[key];
+
+    results.push({ key });
+    results.push(...items);
+  };
+
+  return results;
 }

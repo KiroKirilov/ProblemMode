@@ -1,0 +1,827 @@
+[
+  {
+    "Name": "Arnold Press",
+    "Category": "WeightAndReps",
+    "BodyPart": "Shoulders"
+  },
+  {
+    "Name": "Around the World",
+    "Category": "WeightAndReps",
+    "BodyPart": "Chest"
+  },
+  {
+    "Name": "Ab Wheel",
+    "Category": "RepsOnly",
+    "BodyPart": "Core"
+  },
+  {
+    "Name": "Aerobics",
+    "Category": "Duration",
+    "BodyPart": "Cardio"
+  },
+  {
+    "Name": "Back Extension",
+    "Category": "WeightAndReps",
+    "BodyPart": "Back"
+  },
+  {
+    "Name": "Ball Slams",
+    "Category": "WeightAndReps",
+    "BodyPart": "Full body"
+  },
+  {
+    "Name": "Bench Dip",
+    "Category": "RepsOnly",
+    "BodyPart": "Arms"
+  },
+  {
+    "Name": "Bench Press",
+    "Category": "WeightAndReps",
+    "BodyPart": "Chest"
+  },
+  {
+    "Name": "Bench Press - Close Grip",
+    "Category": "WeightAndReps",
+    "BodyPart": "Arms"
+  },
+  {
+    "Name": "Bench Press - Wide Grip",
+    "Category": "WeightAndReps",
+    "BodyPart": "Chest"
+  },
+  {
+    "Name": "Bent Over One Arm Row",
+    "Category": "WeightAndReps",
+    "BodyPart": "Back"
+  },
+  {
+    "Name": "Bent Over Row",
+    "Category": "RepsOnly",
+    "BodyPart": "Back"
+  },
+  {
+    "Name": "Bent Over Row - Underhand",
+    "Category": "WeightAndReps",
+    "BodyPart": "Back"
+  },
+  {
+    "Name": "Bicep Curl",
+    "Category": "WeightAndReps",
+    "BodyPart": "Arms"
+  },
+  {
+    "Name": "Bicycle Crunch",
+    "Category": "RepsOnly",
+    "BodyPart": "Core"
+  },
+  {
+    "Name": "Box Jump",
+    "Category": "RepsOnly",
+    "BodyPart": "Legs"
+  },
+  {
+    "Name": "Box Squat",
+    "Category": "WeightAndReps",
+    "BodyPart": "Legs"
+  },
+  {
+    "Name": "Bulgarian Split Squat",
+    "Category": "WeightAndReps",
+    "BodyPart": "Legs"
+  },
+  {
+    "Name": "Burpee",
+    "Category": "RepsOnly",
+    "BodyPart": "Full body"
+  },
+  {
+    "Name": "Cable Crossover",
+    "Category": "WeightAndReps",
+    "BodyPart": "Chest"
+  },
+  {
+    "Name": "Cable Crunch",
+    "Category": "WeightAndReps",
+    "BodyPart": "Core"
+  },
+  {
+    "Name": "Cable Kickback",
+    "Category": "WeightAndReps",
+    "BodyPart": "Arms"
+  },
+  {
+    "Name": "Cable Pull Through",
+    "Category": "WeightAndReps",
+    "BodyPart": "Legs"
+  },
+  {
+    "Name": "Cable Twist",
+    "Category": "WeightAndReps",
+    "BodyPart": "Core"
+  },
+  {
+    "Name": "Calf Press on Leg Press",
+    "Category": "WeightAndReps",
+    "BodyPart": "Legs"
+  },
+  {
+    "Name": "Calf Press on Seated Leg Press",
+    "Category": "WeightAndReps",
+    "BodyPart": "Legs"
+  },
+  {
+    "Name": "Chest Dip",
+    "Category": "WeightedBodyweight",
+    "BodyPart": "Chest"
+  },
+  {
+    "Name": "Chest Fly",
+    "Category": "WeightAndReps",
+    "BodyPart": "Chest"
+  },
+  {
+    "Name": "Chest Press",
+    "Category": "RepsOnly",
+    "BodyPart": "Chest"
+  },
+  {
+    "Name": "Chin Up",
+    "Category": "WeightedBodyweight",
+    "BodyPart": "Back"
+  },
+  {
+    "Name": "Clean",
+    "Category": "WeightAndReps",
+    "BodyPart": "Olympic"
+  },
+  {
+    "Name": "Clean and Jerk",
+    "Category": "WeightAndReps",
+    "BodyPart": "Olympic"
+  },
+  {
+    "Name": "Climbing",
+    "Category": "Duration",
+    "BodyPart": "Cardio"
+  },
+  {
+    "Name": "Concentration Curl",
+    "Category": "WeightAndReps",
+    "BodyPart": "Arms"
+  },
+  {
+    "Name": "Cross Body Crunch",
+    "Category": "RepsOnly",
+    "BodyPart": "Core"
+  },
+  {
+    "Name": "Crunch",
+    "Category": "RepsOnly",
+    "BodyPart": "Core"
+  },
+  {
+    "Name": "Cycling",
+    "Category": "Duration",
+    "BodyPart": "Cardio"
+  },
+  {
+    "Name": "Deadlift",
+    "Category": "WeightAndReps",
+    "BodyPart": "Legs"
+  },
+  {
+    "Name": "Deadlift High Pull",
+    "Category": "WeightAndReps",
+    "BodyPart": "Olympic"
+  },
+  {
+    "Name": "Decline Bench Press",
+    "Category": "WeightAndReps",
+    "BodyPart": "Chest"
+  },
+  {
+    "Name": "Decline Crunch",
+    "Category": "RepsOnly",
+    "BodyPart": "Core"
+  },
+  {
+    "Name": "Deficit Deadlift",
+    "Category": "WeightAndReps",
+    "BodyPart": "Legs"
+  },
+  {
+    "Name": "Elliptical Machine",
+    "Category": "Duration",
+    "BodyPart": "Cardio"
+  },
+  {
+    "Name": "Face Pull",
+    "Category": "WeightAndReps",
+    "BodyPart": "Shoulders"
+  },
+  {
+    "Name": "Flat Knee Raise",
+    "Category": "RepsOnly",
+    "BodyPart": "Core"
+  },
+  {
+    "Name": "Flat Leg Raise",
+    "Category": "RepsOnly",
+    "BodyPart": "Core"
+  },
+  {
+    "Name": "Floor Press",
+    "Category": "WeightAndReps",
+    "BodyPart": "Chest"
+  },
+  {
+    "Name": "Front Raise",
+    "Category": "WeightAndReps",
+    "BodyPart": "Shoulders"
+  },
+  {
+    "Name": "Front Squat",
+    "Category": "WeightAndReps",
+    "BodyPart": "Legs"
+  },
+  {
+    "Name": "Glute Ham Raise",
+    "Category": "WeightAndReps",
+    "BodyPart": "Legs"
+  },
+  {
+    "Name": "Glute Kickback",
+    "Category": "WeightAndReps",
+    "BodyPart": "Legs"
+  },
+  {
+    "Name": "Goblet Squat",
+    "Category": "WeightAndReps",
+    "BodyPart": "Legs"
+  },
+  {
+    "Name": "Good Morning",
+    "Category": "WeightAndReps",
+    "BodyPart": "Back"
+  },
+  {
+    "Name": "Hack Squat",
+    "Category": "WeightAndReps",
+    "BodyPart": "Legs"
+  },
+  {
+    "Name": "Hammer Curl",
+    "Category": "WeightAndReps",
+    "BodyPart": "Arms"
+  },
+  {
+    "Name": "Handstand Push Up",
+    "Category": "RepsOnly",
+    "BodyPart": "Legs"
+  },
+  {
+    "Name": "Hang Clean",
+    "Category": "WeightAndReps",
+    "BodyPart": "Olympic"
+  },
+  {
+    "Name": "Hang Snatch",
+    "Category": "WeightAndReps",
+    "BodyPart": "Olympic"
+  },
+  {
+    "Name": "Hanging Knee Raise",
+    "Category": "RepsOnly",
+    "BodyPart": "Core"
+  },
+  {
+    "Name": "Hanging Leg Raise",
+    "Category": "RepsOnly",
+    "BodyPart": "Core"
+  },
+  {
+    "Name": "High Knee Skips",
+    "Category": "RepsOnly",
+    "BodyPart": "Legs"
+  },
+  {
+    "Name": "Hiking",
+    "Category": "Duration",
+    "BodyPart": "Cardio"
+  },
+  {
+    "Name": "Hip Abductor",
+    "Category": "WeightAndReps",
+    "BodyPart": "Legs"
+  },
+  {
+    "Name": "Hip Adductor",
+    "Category": "WeightAndReps",
+    "BodyPart": "Legs"
+  },
+  {
+    "Name": "Hip Thrust",
+    "Category": "WeightAndReps",
+    "BodyPart": "Legs"
+  },
+  {
+    "Name": "Incline Bench Press",
+    "Category": "WeightAndReps",
+    "BodyPart": "Chest"
+  },
+  {
+    "Name": "Incline Chest Fly",
+    "Category": "WeightAndReps",
+    "BodyPart": "Chest"
+  },
+  {
+    "Name": "Incline Chest Press",
+    "Category": "WeightAndReps",
+    "BodyPart": "Chest"
+  },
+  {
+    "Name": "Incline Curl",
+    "Category": "WeightAndReps",
+    "BodyPart": "Arms"
+  },
+  {
+    "Name": "Incline Row",
+    "Category": "WeightAndReps",
+    "BodyPart": "Back"
+  },
+  {
+    "Name": "Inverted Row",
+    "Category": "WeightedBodyweight",
+    "BodyPart": "Back"
+  },
+  {
+    "Name": "Iso-Lateral Chest Press",
+    "Category": "WeightAndReps",
+    "BodyPart": "Chest"
+  },
+  {
+    "Name": "Iso-Lateral Row",
+    "Category": "WeightAndReps",
+    "BodyPart": "Back"
+  },
+  {
+    "Name": "Jackknife Sit Up",
+    "Category": "RepsOnly",
+    "BodyPart": "Core"
+  },
+  {
+    "Name": "Jump Rope",
+    "Category": "Duration",
+    "BodyPart": "Cardio"
+  },
+  {
+    "Name": "Jump Shrug",
+    "Category": "WeightAndReps",
+    "BodyPart": "Olympic"
+  },
+  {
+    "Name": "Jump Squat",
+    "Category": "RepsOnly",
+    "BodyPart": "Legs"
+  },
+  {
+    "Name": "Jumping Jack",
+    "Category": "RepsOnly",
+    "BodyPart": "Full body"
+  },
+  {
+    "Name": "Kettlebell Swing",
+    "Category": "WeightAndReps",
+    "BodyPart": "Full body"
+  },
+  {
+    "Name": "Kettlebell Turkish Get Up",
+    "Category": "WeightAndReps",
+    "BodyPart": "Full body"
+  },
+  {
+    "Name": "Kipping Pull Up",
+    "Category": "WeightAndReps",
+    "BodyPart": "Back"
+  },
+  {
+    "Name": "Knee Raise (Captain's Chair)",
+    "Category": "RepsOnly",
+    "BodyPart": "Core"
+  },
+  {
+    "Name": "Knees to Elbows",
+    "Category": "RepsOnly",
+    "BodyPart": "Core"
+  },
+  {
+    "Name": "Lat Pulldown",
+    "Category": "WeightAndReps",
+    "BodyPart": "Back"
+  },
+  {
+    "Name": "Lat Pulldown - Underhand",
+    "Category": "WeightAndReps",
+    "BodyPart": "Back"
+  },
+  {
+    "Name": "Lat Pulldown - Wide Grip",
+    "Category": "WeightAndReps",
+    "BodyPart": "Back"
+  },
+  {
+    "Name": "Lateral Box Jump",
+    "Category": "RepsOnly",
+    "BodyPart": "Legs"
+  },
+  {
+    "Name": "Lateral Raise",
+    "Category": "WeightAndReps",
+    "BodyPart": "Shoulders"
+  },
+  {
+    "Name": "Leg Extension",
+    "Category": "WeightAndReps",
+    "BodyPart": "Legs"
+  },
+  {
+    "Name": "Leg Press",
+    "Category": "WeightAndReps",
+    "BodyPart": "Legs"
+  },
+  {
+    "Name": "Lunge",
+    "Category": "WeightAndReps",
+    "BodyPart": "Legs"
+  },
+  {
+    "Name": "Lying Leg Curl",
+    "Category": "WeightAndReps",
+    "BodyPart": "Legs"
+  },
+  {
+    "Name": "Mountain Climber",
+    "Category": "RepsOnly",
+    "BodyPart": "Legs"
+  },
+  {
+    "Name": "Muscle Up",
+    "Category": "WeightedBodyweight",
+    "BodyPart": "Full body"
+  },
+  {
+    "Name": "Oblique Crunch",
+    "Category": "Duration",
+    "BodyPart": "Core"
+  },
+  {
+    "Name": "Overhead Press",
+    "Category": "WeightAndReps",
+    "BodyPart": "Shoulders"
+  },
+  {
+    "Name": "Overhead Squat",
+    "Category": "WeightAndReps",
+    "BodyPart": "Olympic"
+  },
+  {
+    "Name": "Pec Deck",
+    "Category": "WeightAndReps",
+    "BodyPart": "Chest"
+  },
+  {
+    "Name": "Pendlay Row",
+    "Category": "WeightAndReps",
+    "BodyPart": "Back"
+  },
+  {
+    "Name": "Pistol Squat",
+    "Category": "RepsOnly",
+    "BodyPart": "Legs"
+  },
+  {
+    "Name": "Plank",
+    "Category": "Duration",
+    "BodyPart": "Core"
+  },
+  {
+    "Name": "Power Clean",
+    "Category": "WeightAndReps",
+    "BodyPart": "Olympic"
+  },
+  {
+    "Name": "Power Snatch",
+    "Category": "WeightAndReps",
+    "BodyPart": "Olympic"
+  },
+  {
+    "Name": "Preacher Curl",
+    "Category": "WeightAndReps",
+    "BodyPart": "Arms"
+  },
+  {
+    "Name": "Press Under",
+    "Category": "WeightAndReps",
+    "BodyPart": "Olympic"
+  },
+  {
+    "Name": "Pull Up",
+    "Category": "WeightedBodyweight",
+    "BodyPart": "Back"
+  },
+  {
+    "Name": "Pullover",
+    "Category": "WeightAndReps",
+    "BodyPart": "Chest"
+  },
+  {
+    "Name": "Push Press",
+    "Category": "WeightAndReps",
+    "BodyPart": "Shoulders"
+  },
+  {
+    "Name": "Push Up",
+    "Category": "WeightedBodyweight",
+    "BodyPart": "Chest"
+  },
+  {
+    "Name": "Rack Pull",
+    "Category": "WeightAndReps",
+    "BodyPart": "Back"
+  },
+  {
+    "Name": "Reverse Crunch",
+    "Category": "RepsOnly",
+    "BodyPart": "Core"
+  },
+  {
+    "Name": "Reverse Curl",
+    "Category": "WeightAndReps",
+    "BodyPart": "Arms"
+  },
+  {
+    "Name": "Reverse Fly",
+    "Category": "WeightAndReps",
+    "BodyPart": "Shoulders"
+  },
+  {
+    "Name": "Reverse Grip Concentration Curl",
+    "Category": "WeightAndReps",
+    "BodyPart": "Arms"
+  },
+  {
+    "Name": "Reverse Plank",
+    "Category": "Duration",
+    "BodyPart": "Core"
+  },
+  {
+    "Name": "Romanian Deadlift",
+    "Category": "WeightAndReps",
+    "BodyPart": "Back"
+  },
+  {
+    "Name": "Rowing",
+    "Category": "WeightAndReps",
+    "BodyPart": "Cardio"
+  },
+  {
+    "Name": "Running",
+    "Category": "Duration",
+    "BodyPart": "Cardio"
+  },
+  {
+    "Name": "Russian Twist",
+    "Category": "RepsOnly",
+    "BodyPart": "Core"
+  },
+  {
+    "Name": "Seated Calf Raise",
+    "Category": "WeightAndReps",
+    "BodyPart": "Legs"
+  },
+  {
+    "Name": "Seated Leg Curl",
+    "Category": "WeightAndReps",
+    "BodyPart": "Legs"
+  },
+  {
+    "Name": "Seated Leg Press",
+    "Category": "WeightAndReps",
+    "BodyPart": "Legs"
+  },
+  {
+    "Name": "Seated Overhead Press",
+    "Category": "WeightAndReps",
+    "BodyPart": "Shoulders"
+  },
+  {
+    "Name": "Seated Palms Up Wrist Curl",
+    "Category": "WeightAndReps",
+    "BodyPart": "Arms"
+  },
+  {
+    "Name": "Seated Row",
+    "Category": "WeightAndReps",
+    "BodyPart": "Back"
+  },
+  {
+    "Name": "Seated Wide-Grip Row",
+    "Category": "WeightAndReps",
+    "BodyPart": "Back"
+  },
+  {
+    "Name": "Shoulder Press",
+    "Category": "WeightAndReps",
+    "BodyPart": "Shoulders"
+  },
+  {
+    "Name": "Shrug",
+    "Category": "WeightAndReps",
+    "BodyPart": "Shoulders"
+  },
+  {
+    "Name": "Side Bend",
+    "Category": "WeightAndReps",
+    "BodyPart": "Core"
+  },
+  {
+    "Name": "Side Plank",
+    "Category": "Duration",
+    "BodyPart": "Core"
+  },
+  {
+    "Name": "Single Leg Bridge",
+    "Category": "RepsOnly",
+    "BodyPart": "Legs"
+  },
+  {
+    "Name": "Sit Up",
+    "Category": "RepsOnly",
+    "BodyPart": "Core"
+  },
+  {
+    "Name": "Skating",
+    "Category": "Duration",
+    "BodyPart": "Cardio"
+  },
+  {
+    "Name": "Skiing",
+    "Category": "Duration",
+    "BodyPart": "Cardio"
+  },
+  {
+    "Name": "Skullcrusher",
+    "Category": "WeightAndReps",
+    "BodyPart": "Arms"
+  },
+  {
+    "Name": "Snatch",
+    "Category": "WeightAndReps",
+    "BodyPart": "Olympic"
+  },
+  {
+    "Name": "Snatch Pull",
+    "Category": "WeightAndReps",
+    "BodyPart": "Olympic"
+  },
+  {
+    "Name": "Snowboarding",
+    "Category": "Duration",
+    "BodyPart": "Cardio"
+  },
+  {
+    "Name": "Split Jerk",
+    "Category": "WeightAndReps",
+    "BodyPart": "Olympic"
+  },
+  {
+    "Name": "Squat",
+    "Category": "WeightAndReps",
+    "BodyPart": "Legs"
+  },
+  {
+    "Name": "Squat Row",
+    "Category": "WeightAndReps",
+    "BodyPart": "Full body"
+  },
+  {
+    "Name": "Standing Calf Raise",
+    "Category": "WeightAndReps",
+    "BodyPart": "Legs"
+  },
+  {
+    "Name": "Step-up",
+    "Category": "WeightAndReps",
+    "BodyPart": "Legs"
+  },
+  {
+    "Name": "Stiff Leg Deadlift",
+    "Category": "WeightAndReps",
+    "BodyPart": "Back"
+  },
+  {
+    "Name": "Straight Leg Deadlift",
+    "Category": "WeightAndReps",
+    "BodyPart": "Legs"
+  },
+  {
+    "Name": "Stretching",
+    "Category": "NotMeasurable",
+    "BodyPart": "Other"
+  },
+  {
+    "Name": "Strict Military Press",
+    "Category": "WeightAndReps",
+    "BodyPart": "Shoulders"
+  },
+  {
+    "Name": "Sumo Deadlift",
+    "Category": "WeightAndReps",
+    "BodyPart": "Back"
+  },
+  {
+    "Name": "Sumo Deadlift High Pull",
+    "Category": "WeightAndReps",
+    "BodyPart": "Full body"
+  },
+  {
+    "Name": "Superman",
+    "Category": "Duration",
+    "BodyPart": "Core"
+  },
+  {
+    "Name": "Swimming",
+    "Category": "Duration",
+    "BodyPart": "Cardio"
+  },
+  {
+    "Name": "T Bar Row",
+    "Category": "WeightAndReps",
+    "BodyPart": "Back"
+  },
+  {
+    "Name": "Thruster",
+    "Category": "WeightAndReps",
+    "BodyPart": "Full body"
+  },
+  {
+    "Name": "Toes To Bar",
+    "Category": "RepsOnly",
+    "BodyPart": "Core"
+  },
+  {
+    "Name": "Torso Rotation",
+    "Category": "WeightAndReps",
+    "BodyPart": "Core"
+  },
+  {
+    "Name": "Trap Bar Deadlift",
+    "Category": "WeightAndReps",
+    "BodyPart": "Legs"
+  },
+  {
+    "Name": "Triceps Dip",
+    "Category": "WeightedBodyweight",
+    "BodyPart": "Arms"
+  },
+  {
+    "Name": "Triceps Extension",
+    "Category": "WeightAndReps",
+    "BodyPart": "Arms"
+  },
+  {
+    "Name": "Upright Row",
+    "Category": "WeightAndReps",
+    "BodyPart": "Back"
+  },
+  {
+    "Name": "V Up",
+    "Category": "RepsOnly",
+    "BodyPart": "Core"
+  },
+  {
+    "Name": "Walking",
+    "Category": "Duration",
+    "BodyPart": "Cardio"
+  },
+  {
+    "Name": "Wide Pull Up",
+    "Category": "WeightedBodyweight",
+    "BodyPart": "Back"
+  },
+  {
+    "Name": "Wrist Roller",
+    "Category": "WeightAndReps",
+    "BodyPart": "Arms"
+  },
+  {
+    "Name": "Yoga",
+    "Category": "Duration",
+    "BodyPart": "Cardio"
+  },
+  {
+    "Name": "Zercher Squat",
+    "Category": "WeightAndReps",
+    "BodyPart": "Legs"
+  }
+ ]

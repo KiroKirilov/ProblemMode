@@ -1,12 +1,14 @@
 import { Layout, Text } from "@ui-kitten/components";
 import React, { FC } from "react";
-import { Animated, StyleSheet, View, Easing, Image } from "react-native";
+import { Animated, StyleSheet, View, Easing } from "react-native";
 import { ShadowImage } from "./ShadowImage";
 
 export interface MainPageProps {
   children?: React.ReactNode;
   title: string;
-  RightAccessory?: React.ComponentType;
+  rightAccessory?: () => React.ReactNode;
+
+  renderAfterContent?: (() => React.ReactNode) | false;
 }
 
 const AnimatedText = Animated.createAnimatedComponent(Text);
@@ -24,7 +26,6 @@ const onScroll = Animated.event([{
 
 
 export const MainPage: FC<MainPageProps> = (props: MainPageProps) => {
-  const { RightAccessory } = props;
   const fontSize = animated.interpolate({
     inputRange: [0, 50],
     outputRange: [35, 20],
@@ -52,7 +53,7 @@ export const MainPage: FC<MainPageProps> = (props: MainPageProps) => {
         <AnimatedLayout style={[pageStyles.toolbarContainer, { elevation: shadowElevation }]}>
           <View style={pageStyles.toolbar}>
             <View style={pageStyles.flexView} />
-            {RightAccessory && <RightAccessory />}
+            {props.rightAccessory && props.rightAccessory()}
           </View>
 
         </AnimatedLayout>
@@ -64,6 +65,7 @@ export const MainPage: FC<MainPageProps> = (props: MainPageProps) => {
       </View>
 
       <Animated.ScrollView
+      removeClippedSubviews={true}
         style={pageStyles.flexView}
         contentContainerStyle={{ paddingTop: 110 }}
         scrollEventThrottle={16}
@@ -71,7 +73,9 @@ export const MainPage: FC<MainPageProps> = (props: MainPageProps) => {
         {props.children}
       </Animated.ScrollView>
 
-        <ShadowImage />
+      {props.renderAfterContent && props.renderAfterContent()}
+
+      <ShadowImage />
     </Layout>
   );
 };

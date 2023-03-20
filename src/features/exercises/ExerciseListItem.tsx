@@ -1,7 +1,7 @@
 import { RouteProp, useNavigation, useRoute } from "@react-navigation/native";
 import { StackNavigationProp } from "@react-navigation/stack";
 import { Text, useTheme } from "@ui-kitten/components";
-import React, { useMemo, useState } from "react";
+import React, { memo, useMemo, useState } from "react";
 import { StyleSheet, ViewStyle } from "react-native";
 import { TouchableHighlight, TouchableOpacity } from "react-native-gesture-handler";
 import { IconAvatar } from "../../common/avatars/IconAvatar";

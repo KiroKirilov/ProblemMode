@@ -2,7 +2,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 import React, { FC } from "react";
 import { ExercisesStackPages } from "../exercises/exercisesPages";
 import { ExercisesView } from "../exercises/ExercisesView";
-import { ActiveWorkoutForm } from "./active/ActiveWorkoutForm";
+import { ActiveWorkoutForm } from "./form/ActiveWorkoutForm";
 import { WorkoutStackPages } from "./workoutPages";
 import { WorkoutsHome } from "./WorkoutsHome";
 

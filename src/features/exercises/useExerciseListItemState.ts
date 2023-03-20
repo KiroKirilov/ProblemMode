@@ -7,13 +7,13 @@ import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../app/store";
 import { ExerciseModel } from "../../db/models/exercise";
 import { ExerciseStackParamList, ExercisesStackPages } from "./exercisesPages";
-import { selectExercise, unselectExercise } from "./exercisesSlice";
+import { selectExercise, unselectExercise } from "./exercisesSelectionSlice";
 
 export const useExerciseListItemState = (item: ExerciseModel) => {
   const { params } = useRoute<RouteProp<ExerciseStackParamList, 'exercisesView'>>();
   const navigation = useNavigation<StackNavigationProp<ExerciseStackParamList>>();
-  const isSelected = useSelector((x: RootState) => x.exercises.selectedExercises[item._id.toHexString()]);
-  console.log(isSelected)
+  const [isSelected, setIsSelected] = useState(false);
+  // const isSelected = useSelector((x: RootState) => x.exercisesSelection.selectedExercises[item._id.toHexString()]);
   const selectedBackgroundColor = useTheme()['background-basic-color-2'];
   const dispatch = useDispatch();
 
@@ -21,8 +21,10 @@ export const useExerciseListItemState = (item: ExerciseModel) => {
     if (params?.selectMode) {
       if (isSelected) {
         dispatch(unselectExercise(item._id.toHexString()))
+        setIsSelected(false);
       } else {
-        dispatch(selectExercise(item._id.toHexString()))
+        dispatch(selectExercise(item));
+        setIsSelected(true);
       }
     } else {
       navigation.navigate(ExercisesStackPages.exercisesDetails.name, { id: item._id.toHexString() });

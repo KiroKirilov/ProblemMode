@@ -1,43 +1,50 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { createSelector, createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { RootState } from '../../app/store';
 import { ExerciseModel } from '../../db/models/exercise';
 
-interface SelectedExercises {
-  [key: string]: boolean;
-}
-
 export interface ExercisesState {
-  selectedExercises: SelectedExercises;
-  isCurrentlySelecting: boolean;
+  exercsiesByLetter: ((ExerciseModel & Realm.Object<unknown, never>) | { key: string | number })[];
+  sliceAmount: number;
 }
 
 const initialState: ExercisesState = {
-  selectedExercises: {},
-  isCurrentlySelecting: false
+  exercsiesByLetter: [],
+  sliceAmount: 0
 };
 
 export const exercisesSlice = createSlice({
-  name: 'theme',
+  name: 'exercises',
   initialState,
   reducers: {
-    selectExercise: (state, action: PayloadAction<string>) => {
-      state.selectedExercises = {
-        ...state.selectedExercises,
-        [action.payload]: true
-      }
+    setExercisesByLetter: (state, action: PayloadAction<((ExerciseModel & Realm.Object<unknown, never>) | { key: string | number })[]>) => {
+      state.exercsiesByLetter = action.payload;
     },
-    unselectExercise: (state, action: PayloadAction<string>) => {
-      const { [action.payload]: removedExercise, ...remainingExercises} = state.selectedExercises;
-      state.selectedExercises = remainingExercises;
+
+    setSliceAmount: (state, action: PayloadAction<number>) => {
+      state.sliceAmount = Math.min(action.payload, state.exercsiesByLetter.length);
     },
-    startSelecting: (state) => {
-      state.isCurrentlySelecting = true;
-    },
-    stopSelecting: (state) => {
-      state.isCurrentlySelecting = false;
+
+    incrementSliceAmount: (state, action: PayloadAction<number>) => {
+      state.sliceAmount = Math.min(action.payload + state.sliceAmount, state.exercsiesByLetter.length);
     }
   },
 });
 
-export const { selectExercise, unselectExercise, startSelecting, stopSelecting } = exercisesSlice.actions;
+const selectExercisesByLetter = (state: RootState) => state.exercises.exercsiesByLetter;
+const selectSliceAmount = (state: RootState) => state.exercises.sliceAmount;
+
+export const hasMoreData = createSelector(
+  selectExercisesByLetter,
+  selectSliceAmount,
+  (exercises, sliceAmount) => exercises.length > sliceAmount
+)
+
+export const slicedExercisesByLetter = createSelector(
+  selectExercisesByLetter,
+  selectSliceAmount,
+  (exercises, sliceAmount) => exercises.slice(0, sliceAmount)
+);
+
+export const { setExercisesByLetter, setSliceAmount, incrementSliceAmount } = exercisesSlice.actions;
 
 export default exercisesSlice.reducer;

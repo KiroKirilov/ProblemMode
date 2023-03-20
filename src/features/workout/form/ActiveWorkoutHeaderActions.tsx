@@ -1,11 +1,12 @@
 import { Button, Text } from "@ui-kitten/components";
 import React from "react";
 import { StyleSheet, View } from "react-native";
+import { AllCapsButton } from "../../../common/AllCapsButton";
 import { commonStyles } from "../../../common/commonStyles";
 import { FontAwesomeIcon } from "../../../common/FontAwesomeIcon";
 
 export interface ActiveWorkoutHeaderActionsProps {
-
+  onFinish: () => void;
 }
 
 export const ActiveWorkoutHeaderActions: React.FC<ActiveWorkoutHeaderActionsProps> = (props: ActiveWorkoutHeaderActionsProps) => {
@@ -13,9 +14,9 @@ export const ActiveWorkoutHeaderActions: React.FC<ActiveWorkoutHeaderActionsProp
     <View style={styles.container}>
       <Button appearance="ghost" status="control" accessoryRight={(props) => <FontAwesomeIcon iconStyle={props?.style} name="chevron-down" />} />
 
-      <Button appearance="ghost" status="info">
-        {evaProps => <Text style={[evaProps?.style, commonStyles.allCaps]}>Finish</Text>}
-      </Button>
+      <AllCapsButton appearance="ghost" status="info" onPress={props.onFinish}>
+        Finish
+      </AllCapsButton>
     </View>
   );
 };

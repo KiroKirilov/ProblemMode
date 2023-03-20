@@ -66,9 +66,6 @@ function getRandomArbitrary(min: number, max: number) {
 const Page1 = () => {
   const {insert, useDataQuery} = useRepository<Exercise, ExerciseModel>(ExerciseModel.schema.name);
   
-  const data = useDataQuery().filtered("name == 'stamat'");
-  console.log(data.length);
-
   return (
     <Layout level='2' style={styles.container}>
       <Button onPress={() => insert(ExerciseModel.generateByNames('ab crunch', 'category', 'body part'))}>Insert!!!</Button>

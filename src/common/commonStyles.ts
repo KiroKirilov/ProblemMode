@@ -26,5 +26,11 @@ export const commonStyles = StyleSheet.create({
   allCaps: {
     textTransform: 'uppercase',
     letterSpacing: 2
+  },
+  backgroundlessInput: {    
+    backgroundColor: '#00000000',
+    borderTopColor: '#00000000',
+    borderRightColor: '#00000000',
+    borderLeftColor: '#00000000',
   }
 })

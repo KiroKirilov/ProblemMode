@@ -1,5 +1,5 @@
 
-import { UpdateMode } from 'realm';
+import { Results, UpdateMode } from 'realm';
 import { BaseModel } from './models/baseModel';
 import DbContext from './problemModeDb';
 import { ObjectId } from 'bson';
@@ -17,7 +17,18 @@ export const useRepository = <T extends BaseModel, TModel extends Realm.Object<T
     })
   }
 
-  const remove = (model: TModel | null) => {
+  const insertMany = (entities: T[]) => {
+    return new Promise<void>(resolve => {
+      realm.write(() => {
+        for (const entity of entities) {
+          realm.create(name, entity, UpdateMode.Modified);
+        }
+        resolve();
+      })
+    })
+  }
+
+  const remove = (model: TModel | TModel[] | Results<T> | null) => {
     return new Promise<void>(resolve => {
       realm.write(() => {
         realm.delete(model);
@@ -47,6 +58,7 @@ export const useRepository = <T extends BaseModel, TModel extends Realm.Object<T
   return {
     useObjectById,
     insert,
+    insertMany,
     update,
     remove,
     useDataQuery

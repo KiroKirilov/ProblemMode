@@ -17,6 +17,9 @@ export const useExerciseForm = () => {
   const { bodyParts } = useBodyParts();
   const { categories } = useCategories();
 
+  console.log(categories)
+  console.log(exercise);
+
   const nameControl = useController({
     control,
     defaultValue: exercise?.name || '',
