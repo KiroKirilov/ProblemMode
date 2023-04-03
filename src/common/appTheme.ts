@@ -43,5 +43,9 @@ export const appTheme = {
   "color-danger-600": "#DB4C67",
   "color-danger-700": "#B73459",
   "color-danger-800": "#93214C",
-  "color-danger-900": "#7A1343"
+  "color-danger-900": "#7A1343",
+
+  "background-basic-color-1": '#2a3338',
+  "background-basic-color-2": '#293237',
+  "background-basic-color-3": '#242c31',
 }

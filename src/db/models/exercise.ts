@@ -4,6 +4,7 @@ import { ExerciseBodyPart, ExerciseBodyPartModel } from './exerciseBodyPart';
 import { ExerciseCategory, ExerciseCategoryModel } from './exerciseCategory';
 import { ObjectId } from 'bson';
 import { staticImplements } from '../../common/staticImplementsDecorator';
+import { ExerciseCategoryType } from '../../features/exercises/exerciseCategoryType';
 
 export interface Exercise extends BaseModel {
   name: string;
@@ -24,16 +25,6 @@ export class ExerciseModel extends Realm.Object<ExerciseModel> implements Exerci
       name,
       category: category,
       bodyPart: bodyPart
-    };
-  }
-
-
-  static generateByNames(name: string, catName: string, bpName: string): Exercise {
-    return {
-      _id: new Realm.BSON.ObjectId(),
-      name,
-      category: ExerciseCategoryModel.generate(catName),
-      bodyPart: ExerciseBodyPartModel.generate(bpName)
     };
   }
 

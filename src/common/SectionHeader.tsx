@@ -1,5 +1,5 @@
 import { Text } from "@ui-kitten/components";
-import React from "react";
+import React, { memo } from "react";
 import { StyleSheet } from "react-native";
 import { commonStyles } from "./commonStyles";
 
@@ -7,11 +7,11 @@ export interface SectionHeaderProps {
   title?: string | number;
 }
 
-export const SectionHeader: React.FC<SectionHeaderProps> = (props: SectionHeaderProps) => {
+export const SectionHeader: React.FC<SectionHeaderProps> = memo((props: SectionHeaderProps) => {
   return (
     <Text appearance="hint" style={[styles.title, commonStyles.allCaps]}>{props.title}</Text>
   );
-};
+});
 
 const styles = StyleSheet.create({
   title: {

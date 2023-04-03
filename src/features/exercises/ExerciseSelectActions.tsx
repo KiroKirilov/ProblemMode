@@ -16,7 +16,7 @@ export const ExerciseSelectActions: FC = () => {
   return (
     <>
       <FloatingActionButton iconName="check" buttonNumber={0} onPress={() => finishSelecting(ExercisesAddMode.Regular)} />
-      <FloatingActionButton iconName="link" status="info" buttonNumber={1} onPress={() => finishSelecting(ExercisesAddMode.SuperSet)} />
+      {/* <FloatingActionButton iconName="link" status="info" buttonNumber={1} onPress={() => finishSelecting(ExercisesAddMode.SuperSet)} /> */}
     </>
   );
 };

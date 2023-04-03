@@ -1,36 +1,35 @@
-import { useFocusEffect, useNavigation } from "@react-navigation/native";
-import { StackNavigationProp } from "@react-navigation/stack";
 import { Input, Layout, Text } from "@ui-kitten/components";
-import React, { FC, useCallback } from "react";
+import React, { FC } from "react";
 import { StyleSheet, View } from "react-native";
-import { useDispatch, useSelector } from "react-redux";
-import { RootState } from "../../../app/store";
 import { AllCapsButton } from "../../../common/AllCapsButton";
-import { getTimeOfDayString } from "../../../common/dates";
 import { FontAwesomeIcon } from "../../../common/FontAwesomeIcon";
 import { SubPage } from "../../navigation/SubPage";
-import { ExerciseForm } from "./ExerciseForm";
+import { WorkoutExerciseForm } from "./WorkoutExerciseForm";
 import { ActiveWorkoutHeaderActions } from "./ActiveWorkoutHeaderActions";
 import { useWorkoutForm } from "./useWorkoutForm";
 import { commonStyles } from "../../../common/commonStyles";
-import { useRestTimer } from "../useRestTimer";
 import { useExerciseSelection } from "./useExerciseSelection";
+import { RestTimer } from "./RestTimer";
+import { KeyboardBehaviour, useKeyboardBehaviour } from "../../../common/useKeyboardBehaviour";
 
-export const WorkoutForm: FC = () => {
-  const { goToExercisePicker, controls, control, onSubmit } = useWorkoutForm();
-  const { formattedTime } = useRestTimer();
+export enum WorkoutFormMode {
+  Workout = "Workout",
+  Template = "Template"
+}
+
+export interface WorkoutFormProps {
+  mode?: WorkoutFormMode;
+}
+
+export const WorkoutForm: FC<WorkoutFormProps> = (props: WorkoutFormProps) => {
+  const mode = props.mode || WorkoutFormMode.Workout;
+  const isTemplate = mode == WorkoutFormMode.Template;
+  const { goToExercisePicker, controls, control, onSubmit, onCancel, removeExercise } = useWorkoutForm(mode);
   useExerciseSelection(controls.exercises);
-
-  const onFinish = () => {
-    onSubmit();
-  }
-
-  const onCancel = () => {
-
-  }
+  useKeyboardBehaviour(KeyboardBehaviour.AdjustNothing);
 
   return (
-    <SubPage leftAccessory={() => <ActiveWorkoutHeaderActions onFinish={onFinish} />}>
+    <SubPage leftAccessory={() => <ActiveWorkoutHeaderActions mode={mode} onFinish={onSubmit} workoutName={controls.name.field.value} />}>
       <Layout style={styles.container}>
 
         <View style={styles.horizontalPadding}>
@@ -43,7 +42,7 @@ export const WorkoutForm: FC = () => {
             accessoryRight={props => <FontAwesomeIcon iconStyle={props?.style} name='pen' />}
           />
 
-          <Text appearance="hint" style={styles.restTimer} category="c2">Rest: {formattedTime}</Text>
+          {!isTemplate && <RestTimer />}
 
           <Input
             style={styles.notes}
@@ -57,14 +56,16 @@ export const WorkoutForm: FC = () => {
 
         {
           controls.exercises.fields.map((e, index) => (
-            <ExerciseForm key={index} exercise={e} control={control} index={index} />
+            <WorkoutExerciseForm onRemove={removeExercise} key={index} exercise={e} control={control} index={index} />
           ))
         }
 
-        <View style={styles.horizontalPadding}>
-          <AllCapsButton appearance="ghost" status="info" onPress={goToExercisePicker}>Add Exercise</AllCapsButton>
-          <AllCapsButton appearance="ghost" status="dange" onPress={onCancel}>Cancel Workout</AllCapsButton>
-        </View>
+        <AllCapsButton appearance="ghost" status="info" onPress={goToExercisePicker}>Add Exercise</AllCapsButton>
+
+        {
+          !isTemplate &&
+          <AllCapsButton appearance="ghost" status="danger" onPress={onCancel}>Cancel Workout</AllCapsButton>
+        }
 
       </Layout>
     </SubPage>
@@ -91,7 +92,4 @@ const styles = StyleSheet.create({
   notes: {
     marginVertical: 10
   },
-  restTimer: {
-    textTransform: 'uppercase'
-  }
 })

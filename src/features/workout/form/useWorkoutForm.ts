@@ -1,30 +1,53 @@
 import { useNavigation } from "@react-navigation/native";
 import { StackNavigationProp } from "@react-navigation/stack";
-import { useEffect } from "react";
 import { useController, useFieldArray, useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
 import { getTimeOfDayString } from "../../../common/dates";
 import { startSelecting } from "../../exercises/exercisesSelectionSlice";
 import { WorkoutStackPages, WorkoutStackParamList } from "../workoutPages";
 import { WorkoutFormModel } from "./workoutFormModel";
+import { useWorkoutRepository } from "../useWorkoutRepository";
+import { stopWorkout } from "../activeWorkoutSlice";
+import { WorkoutFormMode } from "./WorkoutForm";
+import { useWorkoutTemplateRepository } from "../useWorkoutTemplateRepository";
 
-export const useWorkoutForm = () => {
+export const useWorkoutForm = (mode: WorkoutFormMode) => {
   const { control, handleSubmit } = useForm<WorkoutFormModel>();
   const navigation = useNavigation<StackNavigationProp<WorkoutStackParamList>>();
   const dispatch = useDispatch();
+  const { create: createWorkout } = useWorkoutRepository();
+  const { create: createTemplate } = useWorkoutTemplateRepository();
 
   const goToExercisePicker = () => {
     dispatch(startSelecting());
     navigation.navigate(WorkoutStackPages.exercisePicker.name, { selectMode: true })
   }
 
-  const onSubmit = (a: any) => {
-    console.log(JSON.stringify(a));
+  const onSubmit = async (model: WorkoutFormModel) => {
+    console.log(JSON.stringify(model));
+
+    if (mode == WorkoutFormMode.Template) {
+      await createTemplate(model);
+      navigation.goBack();
+    } else {
+      await createWorkout(model);
+      dispatch(stopWorkout())
+    }
+  }
+
+  const onCancel = () => {
+    dispatch(stopWorkout())
+  }
+
+  const removeExercise = (index: number) => {
+    exercisesControl.remove(index)
   }
 
   const nameControl = useController({
     control,
-    defaultValue: getTimeOfDayString() + ' Workout',
+    defaultValue: mode == WorkoutFormMode.Template
+      ? 'New workout template'
+      : getTimeOfDayString() + ' Workout',
     name: 'name'
   })
 
@@ -42,6 +65,8 @@ export const useWorkoutForm = () => {
   return {
     goToExercisePicker,
     control,
+    removeExercise,
+    onCancel,
     onSubmit: handleSubmit(onSubmit, (e) => console.log(e)),
     controls: {
       name: nameControl,

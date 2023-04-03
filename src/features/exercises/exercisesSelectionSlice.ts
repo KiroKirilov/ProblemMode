@@ -44,10 +44,13 @@ export const exercisesSelectionSlice = createSlice({
     stopSelecting: (state, action: PayloadAction<ExercisesAddMode>) => {
       state.selectionComplete = true;
       state.addMode = action.payload
+    },
+    exercisesAdded: (state) => {
+      state.selectedExercises = {};
     }
   },
 });
 
-export const { selectExercise, unselectExercise, startSelecting, stopSelecting } = exercisesSelectionSlice.actions;
+export const { selectExercise, unselectExercise, startSelecting, stopSelecting, exercisesAdded } = exercisesSelectionSlice.actions;
 
 export default exercisesSelectionSlice.reducer;

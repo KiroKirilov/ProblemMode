@@ -1,6 +1,6 @@
 import { Layout, Text } from "@ui-kitten/components";
 import React, { FC } from "react";
-import { Animated, StyleSheet, View, Easing } from "react-native";
+import { StyleSheet, View, Easing, ViewStyle, StyleProp, Animated } from "react-native";
 import { ShadowImage } from "./ShadowImage";
 
 export interface MainPageProps {
@@ -9,6 +9,8 @@ export interface MainPageProps {
   rightAccessory?: () => React.ReactNode;
 
   renderAfterContent?: (() => React.ReactNode) | false;
+  contentContainerStyle?: StyleProp<ViewStyle>;
+  hideShadow?: boolean;
 }
 
 const AnimatedText = Animated.createAnimatedComponent(Text);
@@ -65,17 +67,17 @@ export const MainPage: FC<MainPageProps> = (props: MainPageProps) => {
       </View>
 
       <Animated.ScrollView
-      removeClippedSubviews={true}
+        removeClippedSubviews={true}
         style={pageStyles.flexView}
-        contentContainerStyle={{ paddingTop: 110 }}
-        scrollEventThrottle={16}
+        contentContainerStyle={[{ paddingTop: 110 }, props.contentContainerStyle]}
+        scrollEventThrottle={1}
         onScroll={onScroll}>
         {props.children}
       </Animated.ScrollView>
 
       {props.renderAfterContent && props.renderAfterContent()}
 
-      <ShadowImage />
+      {!props.hideShadow && <ShadowImage />}
     </Layout>
   );
 };
@@ -109,6 +111,7 @@ export const pageStyles = StyleSheet.create({
   },
   flexView: {
     flex: 1,
+    width: '100%'
   },
   title: {
     fontFamily: 'Roboto-Light',

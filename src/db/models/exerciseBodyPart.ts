@@ -1,12 +1,14 @@
 
 import { Realm } from '@realm/react';
 import { ObjectId } from 'bson';
-import { BaseModel } from "./baseModel";
+import { staticImplements } from '../../common/staticImplementsDecorator';
+import { BaseModel, BaseModelStatic } from "./baseModel";
 
 export interface ExerciseBodyPart extends BaseModel {
   name: string;
 }
 
+@staticImplements<BaseModelStatic<ExerciseBodyPartModel>>()
 export class ExerciseBodyPartModel extends Realm.Object<ExerciseBodyPartModel> implements ExerciseBodyPart {
   _id!: ObjectId;
   name!: string;

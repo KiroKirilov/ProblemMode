@@ -1,6 +1,6 @@
-import { Button, Input, Text } from "@ui-kitten/components";
+import { Button, Input, MenuItem, OverflowMenu, Text } from "@ui-kitten/components";
 import { useTheme } from "@ui-kitten/components/theme";
-import React, { useMemo } from "react";
+import React, { useMemo, useState } from "react";
 import { Control, FieldArrayWithId } from "react-hook-form";
 import { StyleSheet, View } from "react-native";
 import { AllCapsButton } from "../../../common/AllCapsButton";
@@ -9,27 +9,52 @@ import { FontAwesomeIcon } from "../../../common/FontAwesomeIcon";
 import { WorkoutFormModel } from "./workoutFormModel";
 import { exerciseTypeValueLabelsMap } from "./exerciseTypeColumnsInfo";
 import { useWorkoutExerciseForm } from "./useWorkoutExerciseForm";
+import Swipeable from 'react-native-gesture-handler/Swipeable';
+import { TouchableOpacity } from "react-native-gesture-handler";
+import { WorkoutSetForm } from "./WorkoutSetForm";
 
-export interface ExerciseFormProps {
+export interface WorkoutExerciseFormProps {
   exercise: FieldArrayWithId<WorkoutFormModel, "exercises", "id">;
   control: Control<WorkoutFormModel, any>
   index: number;
+  onRemove: (index: number) => void;
 }
 
-export const ExerciseForm: React.FC<ExerciseFormProps> = (props: ExerciseFormProps) => {
-  const setCompletedBgColor = useTheme()['color-success-500'] + '44';
-  const { controls, updateSet, addEmptySet, toggleCompleteSet } = useWorkoutExerciseForm(props.control, props.index);
+export const WorkoutExerciseForm: React.FC<WorkoutExerciseFormProps> = (props: WorkoutExerciseFormProps) => {
+  const { controls, addEmptySet } = useWorkoutExerciseForm(props.control, props.index);
+  const [removeMenuVisible, setRemoveMenuVisible] = useState(false);
 
+  const handleRemove = () => {
+    setRemoveMenuVisible(false);
+    props.onRemove(props.index);
+  }
+
+  const renderToggleButton = () => {
+    return <Button
+      size="small"
+      appearance="ghost"
+      status="basic"
+      onPress={() => setRemoveMenuVisible(true)}
+      accessoryLeft={props => <FontAwesomeIcon iconStyle={props?.style} name="ellipsis-v" />} />
+  }
 
   const columnInfo = useMemo(() => {
     return exerciseTypeValueLabelsMap[props.exercise.categoryType]
   }, [props.exercise.categoryType])
 
-
   return (
     <View style={styles.container}>
       <View style={styles.horizontalPadding}>
-        <Text style={styles.name} status='primary'>{controls.name.field.value}</Text>
+        <View style={styles.titleContainer}>
+          <Text style={styles.name} status='primary'>{controls.name.field.value}</Text>
+
+          <OverflowMenu
+            visible={removeMenuVisible}
+            anchor={renderToggleButton}
+            onBackdropPress={() => setRemoveMenuVisible(false)}>
+            <MenuItem title='Remove' onPress={handleRemove} />
+          </OverflowMenu>
+        </View>
 
         <View style={styles.setsTable}>
           <Text style={[styles.setCol, commonStyles.allCaps, styles.tableHeader]}>Set</Text>
@@ -42,42 +67,7 @@ export const ExerciseForm: React.FC<ExerciseFormProps> = (props: ExerciseFormPro
 
       {
         controls.sets.fields.map((set, index) => (
-          <View key={index} style={set.isCompleted ? { backgroundColor: setCompletedBgColor } : {}}>
-
-            <View style={[styles.horizontalPadding, styles.setsTable, styles.tableRow]}>
-              <Text status="primary" style={styles.setCol}>{index + 1}</Text>
-
-              {
-                columnInfo.showValue &&
-                <Input
-                  keyboardType="numeric"
-                  textAlign="center"
-                  size='small'
-                  onChangeText={newVal => updateSet(index, 'value', newVal)}
-                  style={[styles.valueCol, set.isCompleted ? commonStyles.backgroundlessInput : {}]}
-                  value={set.value ? set.value.toString() : ''} />
-              }
-
-              {
-                columnInfo.showReps &&
-                <Input
-                  keyboardType="numeric"
-                  textAlign="center"
-                  size='small'
-                  onChangeText={newVal => updateSet(index, 'reps', newVal)}
-                  style={[styles.repsCol, set.isCompleted ? commonStyles.backgroundlessInput : {}]}
-                  value={set.reps ? set.reps.toString() : ''} />
-              }
-
-              <Button
-                style={[styles.completeSetButton]}
-                status={set.isCompleted ? "success" : "basic"}
-                appearance={set.isCompleted ? "filled" : "outline"}
-                size="small"
-                onPress={() => toggleCompleteSet(index, set.isCompleted)}
-                accessoryRight={(accessoryProps) => <FontAwesomeIcon name='check' iconStyle={accessoryProps?.style} />} />
-            </View>
-          </View>
+          <WorkoutSetForm key={index} set={set} index={index} columnInfo={columnInfo} setsControl={controls.sets} />
         ))
       }
 
@@ -89,7 +79,6 @@ export const ExerciseForm: React.FC<ExerciseFormProps> = (props: ExerciseFormPro
 const styles = StyleSheet.create({
   container: {
     marginTop: 10,
-    // paddingHorizontal: 15
   },
   horizontalPadding: {
     paddingHorizontal: 15
@@ -132,5 +121,13 @@ const styles = StyleSheet.create({
   },
   tableRow: {
     paddingVertical: 5
+  },
+  titleContainer: {
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'space-between'
+  },
+  deleteSetButton: {
+    width: '100%'
   }
 })

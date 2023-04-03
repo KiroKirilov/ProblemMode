@@ -7,19 +7,24 @@ export class WorkoutStackPages {
     title: 'Workout',
   };
 
-  public static activeWorkout: PageInfo = {
-    name: 'activeWorkout',
-    title: 'activeWorkout',
-  };
-
   public static exercisePicker: PageInfo = {
     name: 'exercisePicker',
     title: 'exercisePicker',
+  };
+
+  public static templateForm: PageInfo = {
+    name: 'templateForm',
+    title: 'templateForm',
+  };
+
+  public static templateDetails: PageInfo = {
+    name: 'templateDetails',
+    title: 'templateDetails',
   };
 }
 
 export interface WorkoutStackParamList extends ParamListBase {
   workoutsHome: undefined;
-  activeWorkout: undefined;
   exercisePicker: { selectMode: boolean } | undefined;
+  templateForm: undefined;
 }

@@ -14,7 +14,7 @@ interface ExerciseListItemProps {
   item: ExerciseModel;
 }
 
-export const ExerciseListItem: React.FC<ExerciseListItemProps> = (props: ExerciseListItemProps) => {
+export const ExerciseListItem: React.FC<ExerciseListItemProps> = memo((props: ExerciseListItemProps) => {
   const { item } = props;
   const { handlePress, isSelected, selectedStyles, selectedBackgroundColor } = useExerciseListItemState(item);
 
@@ -31,7 +31,7 @@ export const ExerciseListItem: React.FC<ExerciseListItemProps> = (props: Exercis
       </>
     </TouchableHighlight>
   );
-};
+});
 
 const styles = StyleSheet.create({
   container: {

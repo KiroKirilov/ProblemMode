@@ -13,8 +13,7 @@ export const useExerciseListItemState = (item: ExerciseModel) => {
   const { params } = useRoute<RouteProp<ExerciseStackParamList, 'exercisesView'>>();
   const navigation = useNavigation<StackNavigationProp<ExerciseStackParamList>>();
   const [isSelected, setIsSelected] = useState(false);
-  // const isSelected = useSelector((x: RootState) => x.exercisesSelection.selectedExercises[item._id.toHexString()]);
-  const selectedBackgroundColor = useTheme()['background-basic-color-2'];
+  const selectedBackgroundColor = useTheme()['background-basic-color-3'];
   const dispatch = useDispatch();
 
   const handlePress = () => {
