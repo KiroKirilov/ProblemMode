@@ -62,6 +62,7 @@ export const useExerciseForm = () => {
     bodyParts,
     categories,
     onSubmit: handleSubmit(onSubmit),
+    title: !!exercise ? 'Edit Exercise' : 'New Exercise',
     controls: {
       name: nameControl,
       bodyPart: bodyPartControl,

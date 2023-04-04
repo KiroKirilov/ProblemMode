@@ -6,24 +6,29 @@ import { commonStyles } from "../../../common/commonStyles";
 import { FontAwesomeIcon } from "../../../common/FontAwesomeIcon";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../../app/store";
-import { manualMinimize } from "../activeWorkoutSlice";
-import { WorkoutFormMode } from "./WorkoutForm";
+import { manualMinimize } from "../workoutSlice";
+import { WorkoutFormAction, WorkoutFormMode } from "./WorkoutForm";
 import { useNavigation } from "@react-navigation/native";
 
 export interface ActiveWorkoutHeaderActionsProps {
   onFinish: () => void;
   workoutName: string;
   mode: WorkoutFormMode;
+  action: WorkoutFormAction;
 }
 
 export const ActiveWorkoutHeaderActions: React.FC<ActiveWorkoutHeaderActionsProps> = (props: ActiveWorkoutHeaderActionsProps) => {
-  const formIsMinimized = useSelector((x: RootState) => x.activeWorkout.formIsMinimized);
+  const formIsMinimized = useSelector((x: RootState) => x.workout.formIsMinimized);
   const navigation = useNavigation();
   const dispatch = useDispatch();
-  const isTemplate = props.mode == WorkoutFormMode.Template
+  const isTemplate = props.mode == WorkoutFormMode.Template;
   const iconName = isTemplate
     ? "arrow-left"
     : "chevron-down";
+
+  const templateHeaderText = props.action == WorkoutFormAction.Create
+    ? 'Create Workout Template'
+    : 'Edit Workout Template'
 
   const handleLeftButtonPress = () => {
     if (isTemplate) {
@@ -43,14 +48,16 @@ export const ActiveWorkoutHeaderActions: React.FC<ActiveWorkoutHeaderActionsProp
           </View>
 
           : <View style={styles.container}>
-            <Button
-              appearance="ghost"
-              status="control"
-              onPress={handleLeftButtonPress}
-              accessoryRight={(props) => <FontAwesomeIcon iconStyle={props?.style} name={iconName} />} />
+            <View style={styles.leftSide}>
+              <Button
+                appearance="ghost"
+                status="control"
+                onPress={handleLeftButtonPress}
+                accessoryRight={(props) => <FontAwesomeIcon iconStyle={props?.style} name={iconName} />} />
 
 
-            {isTemplate && <Text style={styles.templateHeaderText}>Workout Template</Text>}
+              {isTemplate && <Text>{templateHeaderText}</Text>}
+            </View>
 
             <AllCapsButton appearance="ghost" status="info" onPress={props.onFinish}>
               {
@@ -96,7 +103,9 @@ const styles = StyleSheet.create({
     backgroundColor: "#999",
     marginTop: -5,
   },
-  templateHeaderText: {
-    marginLeft: -75
+  leftSide: {
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center'
   }
 })

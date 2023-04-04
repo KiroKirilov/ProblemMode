@@ -13,9 +13,8 @@ import { useExerciseForm } from "./useExerciseForm";
 const formIconSize = 50
 
 export const ExerciseForm: React.FC = () => {
-  const title = 'New Exercise'
   useKeyboardBehaviour(KeyboardBehaviour.AdjustNothing);
-  const { controls, onSubmit, bodyParts, categories } = useExerciseForm();
+  const { controls, onSubmit, bodyParts, categories, title } = useExerciseForm();
 
   return (
     <SubPage title={title} level="2" contentContainerStyle={styles.container}>

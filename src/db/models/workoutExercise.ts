@@ -1,20 +1,20 @@
 import { ObjectId } from "bson";
 import { staticImplements } from "../../common/staticImplementsDecorator";
 import { BaseModel, BaseModelStatic } from "./baseModel";
-import { Exercise } from "./exercise";
+import { Exercise, ExerciseModel } from "./exercise";
 import { WorkoutSet, WorkoutSetModel } from "./workoutSet";
 
 export interface WorkoutExercise {
-  exercise: Exercise;
+  exercise: ExerciseModel;
   sets: WorkoutSet[];
 }
 
 @staticImplements<BaseModelStatic<WorkoutExerciseModel, {}>>()
 export class WorkoutExerciseModel extends Realm.Object<WorkoutExerciseModel> implements WorkoutExercise {
-  exercise!: Exercise;
+  exercise!: ExerciseModel;
   sets!: WorkoutSet[];
 
-  static generate(exercise: Exercise, sets: WorkoutSet[]): WorkoutExercise {
+  static generate(exercise: ExerciseModel, sets: WorkoutSet[]): WorkoutExercise {
     return {
       exercise,
       sets

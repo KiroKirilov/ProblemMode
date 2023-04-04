@@ -17,19 +17,26 @@ export enum WorkoutFormMode {
   Template = "Template"
 }
 
+export enum WorkoutFormAction {
+  Create = "Create",
+  Edit = "Edit"
+}
+
 export interface WorkoutFormProps {
   mode?: WorkoutFormMode;
+  action?: WorkoutFormAction;
 }
 
 export const WorkoutForm: FC<WorkoutFormProps> = (props: WorkoutFormProps) => {
   const mode = props.mode || WorkoutFormMode.Workout;
+  const action = props.action || WorkoutFormAction.Create;
   const isTemplate = mode == WorkoutFormMode.Template;
-  const { goToExercisePicker, controls, control, onSubmit, onCancel, removeExercise } = useWorkoutForm(mode);
+  const { goToExercisePicker, controls, control, onSubmit, onCancel, removeExercise } = useWorkoutForm(mode, action);
   useExerciseSelection(controls.exercises);
   useKeyboardBehaviour(KeyboardBehaviour.AdjustNothing);
 
   return (
-    <SubPage leftAccessory={() => <ActiveWorkoutHeaderActions mode={mode} onFinish={onSubmit} workoutName={controls.name.field.value} />}>
+    <SubPage leftAccessory={() => <ActiveWorkoutHeaderActions mode={mode} action={action} onFinish={onSubmit} workoutName={controls.name.field.value} />}>
       <Layout style={styles.container}>
 
         <View style={styles.horizontalPadding}>
@@ -56,7 +63,7 @@ export const WorkoutForm: FC<WorkoutFormProps> = (props: WorkoutFormProps) => {
 
         {
           controls.exercises.fields.map((e, index) => (
-            <WorkoutExerciseForm onRemove={removeExercise} key={index} exercise={e} control={control} index={index} />
+            <WorkoutExerciseForm mode={mode} onRemove={removeExercise} key={index} exercise={e} control={control} index={index} />
           ))
         }
 

@@ -2,7 +2,7 @@ import { configureStore } from '@reduxjs/toolkit';
 import exercisesSelectionSlice from '../features/exercises/exercisesSelectionSlice';
 import exercisesSlice from '../features/exercises/exercisesSlice';
 import themeSlice from '../features/theme/themeSlice';
-import activeWorkoutSlice from '../features/workout/activeWorkoutSlice';
+import workoutSlice from '../features/workout/workoutSlice';
 import restTimerSlice from '../features/workout/restTimerSlice';
 
 export const store = configureStore({
@@ -11,7 +11,7 @@ export const store = configureStore({
     exercisesSelection: exercisesSelectionSlice,
     exercises: exercisesSlice,
     restTimer: restTimerSlice,
-    activeWorkout: activeWorkoutSlice
+    workout: workoutSlice
   },
   
   middleware: (getDefaultMiddleware) => getDefaultMiddleware({

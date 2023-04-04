@@ -26,5 +26,6 @@ export class WorkoutStackPages {
 export interface WorkoutStackParamList extends ParamListBase {
   workoutsHome: undefined;
   exercisePicker: { selectMode: boolean } | undefined;
-  templateForm: undefined;
+  templateForm: { isEdit: boolean } | undefined;
+  templateDetails: { templateId: string };
 }

@@ -10,12 +10,14 @@ import { SpecialSetTypes, specialSetTypesAbbreviationsMap, specialSetTypesTitles
 import { ExerciseTypeColumnInfo } from "./exerciseTypeColumnsInfo";
 import { useWorkoutSetForm } from "./useWorkoutSetForm";
 import { WorkoutFormModel } from "./workoutFormModel";
+import { WorkoutFormMode } from "./WorkoutForm";
 
 export interface WorkoutSetFormProps {
   set: FieldArrayWithId<WorkoutFormModel, `exercises.${number}.sets`, "id">
   index: number;
   setsControl: UseFieldArrayReturn<WorkoutFormModel, `exercises.${number}.sets`, "id">;
   columnInfo: ExerciseTypeColumnInfo;
+  mode: WorkoutFormMode;
 }
 
 const completedSetBgColorAlpha = '44';
@@ -30,6 +32,11 @@ export const WorkoutSetForm: React.FC<WorkoutSetFormProps> = (props: WorkoutSetF
   const [setTypeMenuVisible, setSetTypeMenuVisible] = useState(false);
   const [selectedSpecialTypeIndex, setSelectedSpecialTypeIndex] = React.useState<IndexPath | undefined>();
   const { getSetNumber, updateSet, updateSetSpecialType, toggleCompleteSet, removeSet, getSetNumberStatus } = useWorkoutSetForm(props.setsControl);
+
+  const isTemplate = props.mode == WorkoutFormMode.Template;
+  const completeSetIcon = isTemplate
+    ? 'lock'
+    : 'check'
 
   const handleSetTypeChange = (index: IndexPath) => {
     const newType = specialTypesAsArray[index.row];
@@ -134,11 +141,12 @@ export const WorkoutSetForm: React.FC<WorkoutSetFormProps> = (props: WorkoutSetF
 
           <Button
             style={[styles.completeSetButton]}
+            disabled={isTemplate}
             status={props.set.isCompleted ? "success" : "basic"}
             appearance={props.set.isCompleted ? "filled" : "outline"}
             size="small"
             onPress={() => toggleCompleteSet(props.index, props.set.isCompleted)}
-            accessoryRight={(accessoryProps) => <FontAwesomeIcon name='check' iconStyle={accessoryProps?.style} />} />
+            accessoryRight={(accessoryProps) => <FontAwesomeIcon name={completeSetIcon} iconStyle={accessoryProps?.style} />} />
         </View>
       </View>
     </Swipeable>

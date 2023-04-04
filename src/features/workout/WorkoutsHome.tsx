@@ -7,14 +7,14 @@ import { StyleSheet, View } from "react-native";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../app/store";
 import { MainPage } from "../navigation/MainPage";
-import { formSheetChanged, startWorkout } from "./activeWorkoutSlice";
+import { formSheetChanged, startWorkout } from "./workoutSlice";
 import { ActiveWorkoutForm } from "./form/ActiveWorkoutForm";
 import { WorkoutTemplatesView } from "./templates/WorkoutTemplatesView";
 import { WorkoutStackPages, WorkoutStackParamList } from "./workoutPages";
 import { WorkoutBottomSheetHeader } from "./WorkoutBottomSheetHeader";
 
 export const WorkoutsHome: FC = () => {
-  const { hasActiveWorkout, manualMinimizeTrigger } = useSelector((x: RootState) => x.activeWorkout)
+  const { hasActiveWorkout, manualMinimizeTrigger } = useSelector((x: RootState) => x.workout)
   const dispatch = useDispatch();
   const bottomSheetRef = useRef<BottomSheet>(null);
 

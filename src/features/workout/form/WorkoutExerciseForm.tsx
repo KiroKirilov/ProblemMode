@@ -12,12 +12,14 @@ import { useWorkoutExerciseForm } from "./useWorkoutExerciseForm";
 import Swipeable from 'react-native-gesture-handler/Swipeable';
 import { TouchableOpacity } from "react-native-gesture-handler";
 import { WorkoutSetForm } from "./WorkoutSetForm";
+import { WorkoutFormMode } from "./WorkoutForm";
 
 export interface WorkoutExerciseFormProps {
   exercise: FieldArrayWithId<WorkoutFormModel, "exercises", "id">;
   control: Control<WorkoutFormModel, any>
   index: number;
   onRemove: (index: number) => void;
+  mode: WorkoutFormMode;
 }
 
 export const WorkoutExerciseForm: React.FC<WorkoutExerciseFormProps> = (props: WorkoutExerciseFormProps) => {
@@ -67,7 +69,7 @@ export const WorkoutExerciseForm: React.FC<WorkoutExerciseFormProps> = (props: W
 
       {
         controls.sets.fields.map((set, index) => (
-          <WorkoutSetForm key={index} set={set} index={index} columnInfo={columnInfo} setsControl={controls.sets} />
+          <WorkoutSetForm key={index} set={set} index={index} columnInfo={columnInfo} setsControl={controls.sets} mode={props.mode} />
         ))
       }
 

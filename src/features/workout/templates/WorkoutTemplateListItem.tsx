@@ -2,6 +2,10 @@ import React, { memo } from "react";
 import { WorkoutTemplate } from "../../../db/models/workoutTemplate";
 import { StyleSheet, View } from "react-native";
 import { Text, useTheme } from "@ui-kitten/components";
+import { WorkoutStackPages, WorkoutStackParamList } from "../workoutPages";
+import { useNavigation } from "@react-navigation/native";
+import { StackNavigationProp } from "@react-navigation/stack";
+import { TouchableOpacity } from "react-native-gesture-handler";
 
 export interface WorkoutTemplateListItemProps {
   template: WorkoutTemplate
@@ -9,20 +13,32 @@ export interface WorkoutTemplateListItemProps {
 
 export const WorkoutTemplateListItem: React.FC<WorkoutTemplateListItemProps> = memo((props: WorkoutTemplateListItemProps) => {
   const borderColor = useTheme()['background-basic-color-4'];
+  const navigation = useNavigation<StackNavigationProp<WorkoutStackParamList>>();
+
+  const goToDetails = () => {
+    navigation.navigate(WorkoutStackPages.templateDetails.name, { templateId: props.template._id.toHexString() });
+  }
 
   return (
     <View style={[styles.container, { borderColor }]}>
-      <Text style={styles.name}>{props.template.name}</Text>
+      <TouchableOpacity onPress={goToDetails}>
+        <Text style={styles.name}>{props.template.name}</Text>
 
-      <View style={styles.exercisesContainer}>
+        <View style={styles.exercisesContainer}>
+          {
+            props.template.exercises.map((workoutExercise, index) => (
+              <View>
+                <Text key={index} appearance="hint" style={styles.exerciseText}>{workoutExercise.sets.length}x {workoutExercise.exercise.name}</Text>
+              </View>
+            ))
+          }
+        </View>
+
         {
-          props.template.exercises.map(workoutExercise => (
-            <View>
-              <Text appearance="hint" style={styles.exerciseText}>{workoutExercise.sets.length}x {workoutExercise.exercise.name}</Text>
-            </View>
-          ))
+          props.template.notes &&
+          <Text style={styles.notes} appearance="hint">{props.template.notes}</Text>
         }
-      </View>
+      </TouchableOpacity>
     </View>
   );
 });
@@ -43,5 +59,10 @@ const styles = StyleSheet.create({
   },
   exerciseText: {
     fontSize: 14
+  },
+  notes: {
+    fontSize: 13,
+    fontStyle: 'italic',
+    marginTop: 5
   }
 })
