@@ -10,5 +10,5 @@ export const useInitialData = () => {
   
   useEffect(() => {
     dispatch(setExercisesByLetter(exercisesByLetter));
-  }, [])
+  }, [exercisesByLetter])
 }

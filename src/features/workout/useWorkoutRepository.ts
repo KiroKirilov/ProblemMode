@@ -16,6 +16,8 @@ export const useWorkoutRepository = () => {
 
     const workout = WorkoutModel.generate(formModel.name, formModel.notes, exercises);
     await insert(workout);
+
+    return workout;
   }
 
   return {

@@ -35,7 +35,8 @@ export class WorkoutModel extends Realm.Object<WorkoutModel> implements Workout 
     properties: {
       _id: 'objectId',
       name: 'string',
-      notes: 'string',
+      notes: 'string?',
+      completedOn: 'date',
       exercises: { type: 'list', objectType: 'WorkoutExercise' }
     },
   };

@@ -7,6 +7,7 @@ import { WorkoutStackPages } from "./workoutPages";
 import { WorkoutsHome } from "./WorkoutsHome";
 import { WorkoutTemplateForm } from "./templates/WorkoutTemplateForm";
 import { WorkoutTemplateDetails } from "./templates/WorkoutTemplateDetails";
+import { WorkoutFinished } from "./WorkoutFinished";
 
 const Stack = createStackNavigator();
 
@@ -15,6 +16,7 @@ export const WorkoutStack: FC = () => {
     <Stack.Navigator initialRouteName={WorkoutStackPages.workoutsHome.name}>
       <Stack.Screen options={{ headerShown: false }} name={WorkoutStackPages.workoutsHome.name} component={WorkoutsHome} />
       <Stack.Screen options={{ headerShown: false }} name={WorkoutStackPages.templateForm.name} component={WorkoutTemplateForm} />
+      <Stack.Screen options={{ headerShown: false }} name={WorkoutStackPages.workoutFinished.name} component={WorkoutFinished} />
       <Stack.Screen options={{ headerShown: false }} name={WorkoutStackPages.templateDetails.name} component={WorkoutTemplateDetails} />
       <Stack.Screen options={{ headerShown: false, presentation: 'card' }} name={WorkoutStackPages.exercisePicker.name} component={ExercisesView} />
     </Stack.Navigator>

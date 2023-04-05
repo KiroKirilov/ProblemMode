@@ -64,8 +64,9 @@ export const useWorkoutForm = (mode: WorkoutFormMode, action: WorkoutFormAction)
     if (mode == WorkoutFormMode.Template) {
       await handleTemplateSubmit(model);
     } else {
-      await createWorkout(model);
-      dispatch(stopWorkout())
+      var workout = await createWorkout(model);
+      dispatch(stopWorkout());
+      navigation.navigate(WorkoutStackPages.workoutFinished.name, { workout });
     }
   }
 
