@@ -12,6 +12,8 @@ import { BottomTabs } from '../../common/pageNames';
 import { ExerciseBodyPart, ExerciseBodyPartModel } from '../../db/models/exerciseBodyPart';
 import { WorkoutStack } from '../workout/WorkoutStack';
 import { Exercise, ExerciseModel } from '../../db/models/exercise';
+import { HistoryStack } from '../history/HistoryStack';
+import { DashboardStack } from '../dashboard/DashboardStack';
 
 const BottomTab = createBottomTabNavigator();
 const Stack = createStackNavigator();
@@ -23,12 +25,13 @@ export const AppNavigationContainer: FC = () => {
         <BottomTab.Screen
           name={BottomTabs.dashboard.name}
           options={{ headerShown: false }}
-          component={Page1}
+          component={DashboardStack}
         />
 
         <BottomTab.Screen
+          options={{ headerShown: false }}
           name={BottomTabs.activityHistory.name}
-          component={Page2}
+          component={HistoryStack}
         />
 
         <BottomTab.Screen
@@ -58,72 +61,10 @@ const styles = StyleSheet.create({
   },
 });
 
-function getRandomArbitrary(min: number, max: number) {
-  return Math.random() * (max - min) + min;
-}
-
-
-const Page1 = () => {
-  const {insert, useDataQuery} = useRepository<Exercise, ExerciseModel>(ExerciseModel.schema.name);
-  
-  return (
-    <Layout level='2' style={styles.container}>
-      <Button>Insert!!!</Button>
-    </Layout>
-  );
-};
-
-const Page2 = () => {
-  return (
-    <Stack.Navigator initialRouteName="Home">
-      <Stack.Screen name="Home" component={Home} />
-      <Stack.Screen name="Home2" component={Home2} />
-    </Stack.Navigator>
-  );
-};
-
 const Page3 = () => {
   return (
     <Layout style={styles.container}>
       <Text>Page 3</Text>
-    </Layout>
-  );
-};
-
-const Home = (props: any) => {
-  const nav = () => {
-    props.navigation.navigate('Home2');
-  };
-
-  const nav2 = () => {
-    props.navigation.navigate(BottomTabs.dashboard.name);
-  };
-
-  return (
-    <Layout style={styles.container}>
-      <Text>Home</Text>
-      <Button onPress={nav}>
-        Go to 2
-      </Button>
-
-      <Button onPress={nav2}>
-        Go to Page 1
-      </Button>
-    </Layout>
-  );
-};
-
-const Home2 = (props: any) => {
-  const nav = () => {
-    props.navigation.navigate('Home');
-  };
-
-  return (
-    <Layout style={styles.container}>
-      <Text>Home2</Text>
-      <Button onPress={nav}>
-        Go to 1
-      </Button>
     </Layout>
   );
 };

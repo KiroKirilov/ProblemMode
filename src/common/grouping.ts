@@ -40,7 +40,7 @@ export function groupBy<TItem>(arr: TItem[], expr: (item: TItem) => string | num
   return groupedToArr(grouped);
 }
 
-export function groupByFlat<TItem>(arr: TItem[], expr: (item: TItem) => string | number): (TItem | { key: string | number })[] {
+export function groupByFlat<TItem>(arr: TItem[], expr: (item: TItem) => string | number): (TItem | { key: string | number, count: number })[] {
   const grouped = getGroupedArray(arr, expr);
 
   const results = [];
@@ -49,7 +49,7 @@ export function groupByFlat<TItem>(arr: TItem[], expr: (item: TItem) => string |
   for (const key in grouped) {
     const items = grouped[key];
 
-    results.push({ key });
+    results.push({ key, count: items.length });
     results.push(...items);
   };
 
