@@ -13,6 +13,7 @@ import { useWorkoutTemplateRepository } from "../useWorkoutTemplateRepository";
 import { RootState } from "../../../app/store";
 import { useEffect } from "react";
 import { WorkoutTemplate } from "../../../db/models/workoutTemplate";
+import { SelectionType } from "../../exercises/selectionType";
 
 export const useWorkoutForm = (mode: WorkoutFormMode, action: WorkoutFormAction) => {
   const template = useSelector((x: RootState) => x.workout.template);
@@ -55,7 +56,7 @@ export const useWorkoutForm = (mode: WorkoutFormMode, action: WorkoutFormAction)
 
   const goToExercisePicker = () => {
     dispatch(startSelecting());
-    navigation.navigate(WorkoutStackPages.exercisePicker.name, { selectMode: true })
+    navigation.navigate(WorkoutStackPages.exercisePicker.name, { selectMode: true, selectionType: SelectionType.Form })
   }
 
   const onSubmit = async (model: WorkoutFormModel) => {

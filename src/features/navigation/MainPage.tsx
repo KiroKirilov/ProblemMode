@@ -115,7 +115,7 @@ export const pageStyles = StyleSheet.create({
   },
   title: {
     fontFamily: 'Roboto-Light',
-    width: '50%',
+    width: '55%',
     paddingLeft: 15
   },
 });

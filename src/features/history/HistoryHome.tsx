@@ -7,6 +7,9 @@ import { HistoryStackPages } from "./historyPages";
 import { MainPageWithScrollCopy } from "../navigation/MainPageWithScrollCopy";
 import { FlatList } from "react-native-gesture-handler";
 import { useWorkoutHistory } from "./useWorkoutHistory";
+import { useSelector } from "react-redux";
+import { RootState } from "../../app/store";
+import { workoutsByMonth } from "./workoutHistorySlice";
 
 type WorkoutItemInfo = ListRenderItemInfo<(WorkoutModel & Realm.Object<unknown, never>) | {
   key: string | number;
@@ -20,13 +23,13 @@ const renderItem = (itemInfo: WorkoutItemInfo) => (
 )
 
 export const HistoryHome: FC = () => {
-  const { workoutsByMonth } = useWorkoutHistory();
+  const byMonth = useSelector(workoutsByMonth);
 
   return (
     <MainPageWithScrollCopy
       title={HistoryStackPages.historyHome.title}>
 
-      <FlatList data={workoutsByMonth}
+      <FlatList data={byMonth}
         windowSize={8}
         initialNumToRender={10}
         renderItem={renderItem} />

@@ -1,7 +1,14 @@
+import { Exercise } from "../../db/models/exercise";
 import { Workout } from "../../db/models/workout";
 import { WorkoutSet } from "../../db/models/workoutSet";
 import { ExerciseCategoryType } from "../exercises/exerciseCategoryType";
+import { WorkoutHistoryItem } from "../history/workoutHistorySlice";
 import { exerciseTypeValueLabelsMap } from "./form/exerciseTypeColumnsInfo";
+
+export interface ExerciseExecution {
+  sets: WorkoutSet[];
+  completedOn: Date;
+}
 
 export const getTotalVolume = (workout: Workout) => {
   let total = 0;
@@ -66,4 +73,28 @@ export const calculateSetVolume = (set: WorkoutSet, categoryType: ExerciseCatego
   }
 
   return set.value!;
+}
+
+export const getExerciseExecutions = (workoutHistory: WorkoutHistoryItem[], exercise: Exercise) => {
+  const result: ExerciseExecution[] = [];
+
+  for (const workout of workoutHistory) {
+    const workoutExercise = workout.exercises.find(x => x.exercise._id.toHexString() == exercise._id.toHexString());
+
+    if (workoutExercise) {
+      result.push({
+        sets: workoutExercise.sets,
+        completedOn: workout.completedOn
+      })
+    }
+  }
+
+  return result;
+}
+
+export const getEstimatedOneRepMax = (set: WorkoutSet) => {
+  // this is using the Brzycki formula
+  const oneRepMax = set.value! * (36 / (37 - set.reps!));
+
+  return oneRepMax;
 }

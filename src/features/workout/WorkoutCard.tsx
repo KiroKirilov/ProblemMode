@@ -24,7 +24,7 @@ export const WorkoutCard: React.FC<WorkoutCardProps> = (props: WorkoutCardProps)
   return (
     <View style={[styles.workout, dynamicStyles]}>
       <Text style={styles.name}>{props.workout.name}</Text>
-      <Text appearance="hint" style={styles.date}>{props.workout.completedOn.toLocaleString('en-us', { month: 'long', day: 'numeric' })}</Text>
+      <Text appearance="hint" style={styles.date}>{props.workout.completedOn.toLocaleString('en-uk', { month: 'long', day: 'numeric' })}</Text>
 
       {
         props.showTotalVolume &&

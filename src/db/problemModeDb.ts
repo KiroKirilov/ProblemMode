@@ -6,6 +6,7 @@ import { WorkoutModel } from "./models/workout";
 import { WorkoutExerciseModel } from "./models/workoutExercise";
 import { WorkoutSetModel } from "./models/workoutSet";
 import { WorkoutTemplateModel } from "./models/workoutTemplate";
+import { TrackedExerciseModel } from "./models/trackedExercise";
 
 const config = {
   schema: [
@@ -15,7 +16,8 @@ const config = {
     WorkoutModel,
     WorkoutExerciseModel,
     WorkoutSetModel,
-    WorkoutTemplateModel
+    WorkoutTemplateModel,
+    TrackedExerciseModel
   ],
 };
 

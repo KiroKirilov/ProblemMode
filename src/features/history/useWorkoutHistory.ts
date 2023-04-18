@@ -6,18 +6,11 @@ import { groupByFlat } from "../../common/grouping";
 
 export const useWorkoutHistory = () => {
   const { useDataQuery } = useRepository<Workout, WorkoutModel>(WorkoutModel.schema.name);
-  
+
   const workouts = useDataQuery().sorted("completedOn", true);
   const iteratableWorkouts = useIteratableResults(workouts);
 
-  const byMonth = useMemo(() => {
-    return groupByFlat(
-      iteratableWorkouts,
-      x => x.completedOn.toLocaleString('en-us', { month: 'long' }))
-  }, [iteratableWorkouts])
-
   return {
-    workouts: iteratableWorkouts,
-    workoutsByMonth: byMonth
+    workouts: iteratableWorkouts
   }
 }

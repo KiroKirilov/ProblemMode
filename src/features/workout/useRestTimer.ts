@@ -28,12 +28,12 @@ export const useRestTimer = () => {
 		const minutes: number = Math.floor(time / 60);
 		const seconds: number = time % 60;
 
-		const formattedSeconds = seconds.toLocaleString("en-US", {
+		const formattedSeconds = seconds.toLocaleString("en-UK", {
 			minimumIntegerDigits: 2,
 			useGrouping: false,
 		});
 
-		const formattedMinutes = minutes.toLocaleString("en-US", {
+		const formattedMinutes = minutes.toLocaleString("en-UK", {
 			minimumIntegerDigits: 2,
 			useGrouping: false,
 		});

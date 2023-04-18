@@ -1,6 +1,7 @@
 import { ParamListBase } from "@react-navigation/native";
 import { PageInfo } from "../../common/pageInfo";
 import { Workout } from "../../db/models/workout";
+import { SelectionType } from "../exercises/selectionType";
 
 export class WorkoutStackPages {
   public static workoutsHome: PageInfo = {
@@ -31,7 +32,7 @@ export class WorkoutStackPages {
 
 export interface WorkoutStackParamList extends ParamListBase {
   workoutsHome: undefined;
-  exercisePicker: { selectMode: boolean } | undefined;
+  exercisePicker: { selectMode: boolean, selectionType: SelectionType } | undefined;
   templateForm: { isEdit: boolean } | undefined;
   templateDetails: { templateId: string };
   workoutFinished: {workout: Workout }

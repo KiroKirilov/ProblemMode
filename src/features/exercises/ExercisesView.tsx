@@ -30,7 +30,7 @@ export const ExercisesView: FC = () => {
     <MainPageWithScrollCopy
       title={ExercisesStackPages.exercisesView.title}
       rightAccessory={() => <ExercisePageActions />}
-      renderAfterContent={params?.selectMode && (() => <ExerciseSelectActions />)}>
+      renderAfterContent={params?.selectMode && (() => <ExerciseSelectActions selectionType={params.selectionType} />)}>
 
       <FlatList data={exercisesByLetter}
         windowSize={8}
